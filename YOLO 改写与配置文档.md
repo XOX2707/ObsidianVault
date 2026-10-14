@@ -10,7 +10,7 @@ updated: 2026-10-14
 
 本文是自用版 YOLO 的完整说明，覆盖：源码放在哪、怎么构建加载、怎么防止被官方版覆盖、怎么接 DeepSeek、知识库、权限、MCP，以及怎么改代码、怎么同步上游。
 
-相关笔记：[[Obsidian 内嵌 AI 插件 + DeepSeek 操作流程]] · [[DeepSeek CLI + Obsidian 联动]]
+总说明：[[使用说明]] · 相关笔记：[[Obsidian 内嵌 AI 插件 + DeepSeek 操作流程]] · [[DeepSeek CLI + Obsidian 联动]] · [[项目进度与待办]]
 
 ---
 
