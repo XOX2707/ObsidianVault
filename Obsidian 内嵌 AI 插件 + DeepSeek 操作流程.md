@@ -79,3 +79,7 @@ updated: 2026-10-14
 - 笔记内容会发送到 DeepSeek 的服务器，敏感笔记请先排除，或改用本地 Ollama 模型。
 - 插件可以修改文件，建议配合 Obsidian Git 或定期备份。
 - 手机端：Smart Composer 的 MCP 和 Copilot 的 Agent 都只能在桌面端用；普通聊天在手机上可以用。
+
+## 后续
+
+选定 YOLO（Smart Composer 的活跃分支）自行改写，见 [[YOLO 改写与配置文档]]。

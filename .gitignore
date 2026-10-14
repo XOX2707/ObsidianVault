@@ -1,0 +1,3 @@
+# Local MCP config (contains tokens)
+.mcp.json
+.deepseek/mcp.json
