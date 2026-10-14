@@ -256,6 +256,8 @@ MCP 只能在桌面端用，手机上整块隐藏。
 
 然后在库根目录运行 `deepseek`，输入 `/mcp list`，应该能看到 `mcp__yolo__vault_search` 等工具。
 
+**终端 Claude Code 也读这个 `.mcp.json`**，格式相同，不用另外配置。在库根目录运行 `claude`，第一次会问是否信任项目里的 MCP 服务器，同意后输入 `/mcp` 能看到 `yolo`。2026-10-15 已实测 `mcp__yolo__vault_search` 的语义检索能返回结果。注意：Claude Desktop 不读这个文件，它用自己的 `claude_desktop_config.json`（见 [[本地助手 vs Obsidian Agent 分工]] 第二节第 3 小节）。
+
 ---
 
 ## 8. 改代码从哪下手

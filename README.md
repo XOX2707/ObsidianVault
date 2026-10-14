@@ -20,6 +20,7 @@
 | [CLAUDE.md](CLAUDE.md) | 写给 AI 的项目说明和规则，本地 Claude Code 启动时自动读取 |
 | [AI协作/交接日志](<AI协作/交接日志.md>) | 云端 Claude 和本地 Claude Code 的交接信箱 |
 | [项目进度与待办](<项目进度与待办.md>) | 已完成事项和待办清单 |
+| [本地助手 vs Obsidian Agent 分工](<本地助手 vs Obsidian Agent 分工.md>) | 几个 AI 助手的区别、费用和分工（已联网核实） |
 | [YOLO 改写与配置文档](<YOLO 改写与配置文档.md>) | YOLO (XOX) 插件的完整手册 |
 | [DeepSeek CLI + Obsidian 联动](<DeepSeek CLI + Obsidian 联动.md>) | deepseek-cli 的作用、配置和局限 |
 | [Obsidian 内嵌 AI 插件 + DeepSeek 操作流程](<Obsidian 内嵌 AI 插件 + DeepSeek 操作流程.md>) | 插件选型调研（仅供参考） |

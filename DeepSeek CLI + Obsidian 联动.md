@@ -26,7 +26,7 @@ version: 0.5.0
 | **把 vault 当“项目”加载规则** | `dist/project.js` | 启动时会自动注入 `DEEPSEEK.md`、`CLAUDE.md`、`AGENTS.md`，可以在这些文件里写 vault 约定，例如目录结构、双链规范、frontmatter 格式。输入 `# 一句话` 会把内容追加到 `DEEPSEEK.md` 的 `## Notes` 小节下。 |
 | **技能 = 可复用的笔记工作流** | `dist/skills.js` | `.deepseek/skills/*.md` 是带 frontmatter 的 Markdown，会自动注册成 `/命令`，适合做 `/daily-review`、`/weekly-summary`、`/inbox-triage` 这类命令。 |
 | **钩子** | `dist/hooks.js` | `.deepseek/hooks.json` 里的钩子会在 `postToolUse` 等事件触发，可以在改文件后自动执行 `git commit`，也就是自动备份 vault。 |
-| **附件和文档提取** | `dist/attachments.js`, `pdf.js`, `office.js`, `ocr.js` | 用 `@文件` 或拖拽可以引用笔记；PDF、Word、PPT、Excel 会自动提取文字，扫描件走 OCR，适合把文献导入笔记。 |
+| **附件和文档提取** | `dist/attachments.js`, `pdf.js`, `office.js`, `ocr.js` | 用 `@文件` 或拖拽可以引用笔记；PDF、Word、PPT、Excel 会自动提取文字，适合把文献导入笔记。DeepSeek 模型**看不了图片**：图片和扫描件只能走 OCR 提取文字，OCR 要另装可选依赖 `npm i -g tesseract.js @napi-rs/canvas`（2026-10-15 查过，本机没装，所以现在图片和扫描件读不出内容）。 |
 | **联网 + 子代理** | `webSearch.js`, `webFetch.js`, `task.js` | 联网检索资料后写成笔记。`task` 会启动一个上下文隔离的子代理来处理大批量笔记。 |
 
 ## 典型配置（vault 根目录 `.mcp.json`）

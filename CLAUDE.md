@@ -14,7 +14,7 @@
 |---|---|---|
 | YOLO (XOX) 插件源码 | `.obsidian/plugins/obsidian-yolo/` | Obsidian 的 AI 侧边栏插件，从上游 Lapis0x0/obsidian-yolo 1.6.11 用 `git subtree --squash` 导入。插件 id 为 `yolo-xox`，已关闭官方自更新（`CORE_SELF_UPDATE_ENABLED = false`）。该目录有自己的 `CLAUDE.md`、`AGENTS.md`、`FEATURE_MAP.md`，改插件代码前必须读 |
 | deepseek-cli 存档 | `deepseek-cli/` | npm 包 `@kavienw/deepseek-cli@0.5.0` 的编译产物，**只读存档，不要修改** |
-| 说明文档 | 根目录 `*.md` | `使用说明.md`（总说明）、`项目进度与待办.md`、`YOLO 改写与配置文档.md`、`DeepSeek CLI + Obsidian 联动.md`、`Obsidian 内嵌 AI 插件 + DeepSeek 操作流程.md`、`README.md` |
+| 说明文档 | 根目录 `*.md` | `使用说明.md`（总说明）、`项目进度与待办.md`、`本地助手 vs Obsidian Agent 分工.md`（各 AI 助手的区别和费用）、`YOLO 改写与配置文档.md`、`DeepSeek CLI + Obsidian 联动.md`、`Obsidian 内嵌 AI 插件 + DeepSeek 操作流程.md`、`README.md` |
 | AI 协作信箱 | `AI协作/` | 云端会话和本地 Claude Code 之间的交接记录，见第 4 节 |
 
 AI 模型：日常用 DeepSeek（`deepseek-v4-pro`、`deepseek-v4-flash`）；难的任务在 YOLO 里切到 Claude（`claude-opus-5-5` 等，使用用户自己的 Anthropic API Key）。
@@ -35,11 +35,13 @@ AI 模型：日常用 DeepSeek（`deepseek-v4-pro`、`deepseek-v4-flash`）；�
 - 开发模式必须先设置插件目录变量，否则会把 `main.js` 复制到库根目录：
   `$env:OBSIDIAN_PLUGIN_DIR = (Get-Location).Path; npm run dev`
 - 改完插件后，要请用户在 Obsidian 里重新加载插件，你自己没法操作 Obsidian 的界面。
+- 库根目录的 `.mcp.json`（不要打开）给 Claude Code 接上了 YOLO 的「外部 Agent 接入」，可以用 `mcp__yolo__vault_search` 按意思搜索笔记。要求 Obsidian 开着、开关打开着；工具没出现时，先用 ToolSearch 搜 `yolo`。
+- 用户看不懂终端里的 markdown 符号。比较长的回复和报告，**追加**到根目录的 `AI助手回复.md` 末尾（标题写 `## YYYY-MM-DD · 主题`），终端里只说要点。用户说“单独建个文件”时才新建文件。
 
 ## 3. 必须遵守的规则
 
 1. **绝不读取、输出或提交密钥。** `.obsidian/plugins/obsidian-yolo/data.json`（里面有 DeepSeek 和 Anthropic 的 Key）、`.mcp.json`、`~/.deepseek-cli/config.json`、`.obsidian/plugins/yolo-xox/`（OAuth 凭据）都不能打开查看，也不能在回复里引用其中的内容。截图和日志里出现的 Key 或 token 也不要复述。
-2. **不要设置 `ANTHROPIC_API_KEY` 环境变量**，也不要建议用户设置，否则 Claude Code 会改用 API 计费。
+2. **不要设置 `ANTHROPIC_API_KEY` 环境变量**，也不要建议用户设置，否则 Claude Code 会改用 API 计费。如果发现当前进程里有这个变量（只查是否存在，不看值），要提醒用户用 `/status` 确认登录方式。也不要建议在 YOLO 里用 Claude OAuth 提供商，Anthropic 不允许第三方工具使用订阅凭据。
 3. **不要改插件文件夹名** `obsidian-yolo`，否则 `git subtree` 同步上游会失效。不要在插件目录里执行 `git init` 或 `git clone`。
 4. **不要动 `deepseek-cli/`**，它是只读存档。
 5. **用户的个人笔记**：没有用户明确同意，不要修改、移动或删除。提交时**只 `git add` 你改过的具体文件**，不要用 `git add -A` 或 `git add .`，以免把用户的私人笔记推到 GitHub。
