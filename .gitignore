@@ -6,3 +6,6 @@
 # .obsidian/plugins/<manifest id>/, which differs from the plugin folder
 .obsidian/plugins/yolo-xox/
 .obsidian/plugins/yolo/
+
+# YOLO chat history (private, stays on this machine)
+YOLO/data/chats/
