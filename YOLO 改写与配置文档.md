@@ -166,6 +166,17 @@ YOLO 内置了 DeepSeek 提供商，也预置了 `deepseek-v4-flash` 和 `deepse
 
 模型编辑里的「Provider 内置工具」可以开启 **DeepSeek 官方联网**。**开启后，YOLO 自己的联网搜索工具会被自动关闭**，两套只能二选一。
 
+> [!warning] 官方联网需要先切换 API 类型
+> DeepSeek 只在 **Anthropic** 和 **OpenAI Responses** 两种接口上提供官方联网；默认的 `openai-compatible`（chat/completions）会直接拒绝这类工具。所以在默认设置下，Web Search 开关是灰的，提示“该提供商当前的 API 类型不支持官方联网”。
+>
+> 要用官方联网：
+> 1. 设置 → 模型 → 编辑 **DeepSeek 提供商**（不是编辑模型），把 **API 类型** 改成 **Anthropic**，保存。Base URL 可以留空，YOLO 会自动改用 `https://api.deepseek.com/anthropic`。
+> 2. 回到模型编辑页，打开 Web Search，然后对两个模型重新跑一次「连通性测试」。
+>
+> 推荐选 Anthropic 而不是 OpenAI Responses：YOLO 给 Anthropic 接口做了 DeepSeek 专用适配（`deepseekAnthropicProvider.ts`，处理“思考 + 工具调用”），OpenAI Responses 走的是通用实现。API 类型是**按提供商**设置的，切换后这个提供商下的所有模型都会改走 Anthropic 接口。
+>
+> 不切也完全可以：保持 `openai-compatible`，使用 YOLO 自带的联网搜索即可（默认已开启）。
+
 ---
 
 ## 5. 知识库（RAG）：DeepSeek 没有嵌入接口
