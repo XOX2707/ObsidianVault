@@ -16,7 +16,10 @@ updated: 2026-10-14
    - 旧名 `deepseek-chat` / `deepseek-reasoner` 已在 2026-07-24 下线，插件里如果还是默认的旧名，要手动改掉。
 3. Obsidian → 设置 → 第三方插件 → 关闭“安全模式”。
 
-## 方案 A（推荐）：Smart Composer，内置 DeepSeek 并支持 MCP
+## 方案 A：Smart Composer，内置 DeepSeek 并支持 MCP（已改用 YOLO，仅供参考）
+
+> [!warning] 本库最终选的是 YOLO
+> Smart Composer 已不再积极开发，本库改用它的活跃分支 YOLO，见 [[YOLO 改写与配置文档]]。**两者不能同时安装**，会冲突。下面的步骤只作为参考，不要照着装。
 
 适合想要“聊天 + 改笔记 + 搜整个 vault + MCP 工具”一体化的人。最新版本 1.2.9。作者已声明“不再积极开发”，但功能完整。
 
@@ -69,7 +72,7 @@ updated: 2026-10-14
 
 | 需求 | 选择 |
 |---|---|
-| 写作、改稿、全库问答、MCP | Smart Composer |
+| 写作、改稿、全库问答、MCP | ~~Smart Composer~~ → **YOLO (XOX)**（本库已采用） |
 | 多步 Agent、Skills、长期项目 | Copilot（opencode + DeepSeek BYOK） |
 | 简单、省钱、直接操作笔记 | Real Chat |
 | 批处理、脚本化、在终端里操作 | [[DeepSeek CLI + Obsidian 联动\|deepseek-cli]] |
