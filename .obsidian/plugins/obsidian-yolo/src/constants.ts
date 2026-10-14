@@ -761,6 +761,10 @@ export const OPENAI_PRICES: Record<string, ModelPricing> = {
 }
 
 export const ANTHROPIC_PRICES: Record<string, ModelPricing> = {
+  'claude-fable-5-1': { input: 10, output: 50 },
+  'claude-opus-5-5': { input: 4, output: 20 },
+  'claude-sonnet-5-5': { input: 2, output: 10 },
+  'claude-haiku-5-5': { input: 0.1, output: 0.5 },
   'claude-opus-4-1': { input: 15, output: 75 },
   'claude-opus-4-0': { input: 15, output: 75 },
   'claude-sonnet-4-0': { input: 3, output: 15 },

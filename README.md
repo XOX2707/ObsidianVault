@@ -1,6 +1,6 @@
 # ObsidianVault
 
-一个**接入 DeepSeek 的 Obsidian 笔记库**。仓库根目录就是库根目录，里面带着一份自用版的 AI 插件 **YOLO (XOX)** 的源码，还有终端工具 **deepseek-cli** 的存档和配套文档。
+一个**接入 DeepSeek（也可切换到 Claude）的 Obsidian 笔记库**。仓库根目录就是库根目录，里面带着一份自用版的 AI 插件 **YOLO (XOX)** 的源码，还有终端工具 **deepseek-cli** 的存档和配套文档。
 
 > 完整说明请看 **[使用说明](<使用说明.md>)**。
 
@@ -8,7 +8,7 @@
 
 | 组成 | 位置 | 说明 |
 |---|---|---|
-| YOLO (XOX) | `.obsidian/plugins/obsidian-yolo/` | Obsidian 里的 AI 侧边栏，可以聊天、改笔记、搜全库、写作补全。基于 [Lapis0x0/obsidian-yolo](https://github.com/Lapis0x0/obsidian-yolo) 1.6.11，插件 id 改为 `yolo-xox`，并关闭了官方自更新 |
+| YOLO (XOX) | `.obsidian/plugins/obsidian-yolo/` | Obsidian 里的 AI 侧边栏，可以聊天、改笔记、搜全库、写作补全。基于 [Lapis0x0/obsidian-yolo](https://github.com/Lapis0x0/obsidian-yolo) 1.6.11，插件 id 改为 `yolo-xox`，关闭了官方自更新，补齐了新版 Claude 模型的支持 |
 | deepseek-cli 存档 | `deepseek-cli/` | `@kavienw/deepseek-cli@0.5.0` 的 npm 包，只用来查阅；要用请运行 `npm i -g @kavienw/deepseek-cli` 安装 |
 | 文档 | 根目录 `*.md` | 见下表 |
 
@@ -41,6 +41,7 @@ npm run build
 1. 用 Obsidian「打开本地仓库」，选中这个文件夹。
 2. 设置 → 第三方插件 → 关闭安全模式 → 启用 **YOLO (XOX)**。不要同时安装 Smart Composer 或官方 YOLO。
 3. 设置 → YOLO (XOX) → 模型 → 添加提供商 → **DeepSeek**，粘贴 Key，启用 `deepseek-v4-pro` 和 `deepseek-v4-flash`。
+4. 可选：再添加 **Anthropic** 提供商，用 Claude 模型（`claude-opus-5-5` 等），见 [使用说明](<使用说明.md>) 第 5.6 节。
 
 详细步骤见 [使用说明](<使用说明.md>) 第 3～5 节。
 

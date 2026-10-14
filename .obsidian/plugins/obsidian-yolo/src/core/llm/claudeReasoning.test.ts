@@ -101,6 +101,8 @@ describe('claudeAcceptsSamplingParams', () => {
 describe('claudeBindsThinkingToPrefix', () => {
   it.each([
     'claude-opus-5-5',
+    'claude-sonnet-5-5',
+    'claude-haiku-5-5',
     'claude-fable-5-1',
     'claude-mythos-5-1',
     'anthropic.claude-opus-5-5-v1:0',

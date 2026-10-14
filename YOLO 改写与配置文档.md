@@ -177,6 +177,10 @@ YOLO 内置了 DeepSeek 提供商，也预置了 `deepseek-v4-flash` 和 `deepse
 >
 > 不切也完全可以：保持 `openai-compatible`，使用 YOLO 自带的联网搜索即可（默认已开启）。
 
+### 4.5 也想用 Claude？
+
+YOLO 可以同时配 DeepSeek 和 Anthropic 两个提供商，在模型下拉框里按对话切换。Anthropic 提供商的配置、推荐模型、价格和注意事项见 [[使用说明]] 第 5.6 节。
+
 ---
 
 ## 5. 知识库（RAG）：DeepSeek 没有嵌入接口
@@ -270,6 +274,8 @@ MCP 只能在桌面端用，手机上整块隐藏。
 | MCP | `src/core/mcp/` |
 | 设置页 | `src/settings/SettingTab.tsx`；**新增设置项要加迁移**：`src/settings/schema/migrations/` |
 | 更新器（防覆盖，开关是 `CORE_SELF_UPDATE_ENABLED`） | `src/core/update/pluginUpdater.ts` |
+| Claude 的思考参数、`block_binding`、采样参数 | `src/core/llm/claudeReasoning.ts`、`src/core/llm/anthropic.ts` |
+| 各模型的价格、上下文长度 | `src/constants.ts`（`ANTHROPIC_PRICES` 等）、`src/utils/llm/model-capability-registry.ts` |
 | 界面文案（中文） | `src/i18n/` |
 
 建议的改写流程：
