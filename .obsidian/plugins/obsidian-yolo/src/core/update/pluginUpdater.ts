@@ -22,6 +22,13 @@ import {
   normalizePluginVersion,
 } from './updateChecker'
 
+/**
+ * Fork switch: this build is a personal fork, so it must never download the
+ * upstream release over itself. Off means no core update check, no prompt,
+ * no self-update and no auto-repair; module updates are unaffected.
+ */
+export const CORE_SELF_UPDATE_ENABLED = false
+
 const STAGING_ROOT = '.yolo-update-staging'
 const REPAIR_META_FILE = 'repair-meta.json'
 const UPDATE_SOURCE_TIMEOUT_MS = 30_000
@@ -78,6 +85,9 @@ export type ApplyStagedUpdateResult =
   | { ok: false; reason: 'not_ready' | 'min_app_version' | 'write_failed' }
 
 export function canSelfUpdate(plugin: YoloPlugin): boolean {
+  if (!CORE_SELF_UPDATE_ENABLED) {
+    return false
+  }
   if (!Platform.isDesktop) {
     return false
   }

@@ -208,6 +208,7 @@ import {
 } from './core/update/moduleUpdateController'
 import { openCommunityPluginsSettings } from './core/update/openCommunityPluginsSettings'
 import {
+  CORE_SELF_UPDATE_ENABLED,
   type PluginUpdateState,
   applyRepairFiles,
   applyStagedUpdate,
@@ -4103,7 +4104,7 @@ ${validationResult.error.issues.map((v) => v.message).join('\n')}`)
     // The Feed and the module catalog are loaded in every mode: they are also
     // what `设置 → 模块` shows. Only prompting and installing follow the mode.
     const [core] = await Promise.all([
-      this.distributionFeedClient
+      CORE_SELF_UPDATE_ENABLED && this.distributionFeedClient
         ? checkForUpdate(this.manifest.version, this.distributionFeedClient)
         : null,
       this.moduleService?.checkForUpdates().catch((error: unknown) => {

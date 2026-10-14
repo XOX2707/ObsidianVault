@@ -59,9 +59,9 @@ npm run build     # 生产构建：类型检查 + 样式 + 运行组件 + 模块
 构建完成后，目录里会出现 `main.js`、`styles.css`，加上已有的 `manifest.json`，这就是 Obsidian 需要的三件套。然后：
 
 1. 在 Obsidian 的 **设置 → 第三方插件** 里关闭安全模式，然后刷新已安装插件列表。
-2. 找到 **YOLO**，启用。
+2. 找到 **YOLO (XOX)**（插件 id 是 `yolo-xox`，见第 3 节），启用。
 3. 如果之前装过 **Smart Composer**，必须先禁用或卸载。YOLO 是从它分出来的，两者会冲突。
-4. 如果之前从插件商店装过官方 **YOLO**，它的文件夹也叫 `obsidian-yolo`，现在已经被这份源码取代。如果文件夹名不同，比如 `yolo`，请删掉那个，免得两份同 id 的插件互相打架。
+4. 如果之前从插件商店装过官方 **YOLO**，请先在 Obsidian 里卸载它。商店版的文件夹如果也叫 `obsidian-yolo`，会和这份源码重叠；如果叫别的名字，两份同时启用会冲突（视图类型相同）。
 
 ### 边改边看（开发模式）
 
@@ -86,25 +86,32 @@ npm test
 
 ---
 
-## 3. 防止被官方版本覆盖（重要）
+## 3. 防止被官方版本覆盖（已处理）
 
-自用改写版最常见的坑是：**官方自动更新把你的 `main.js` 覆盖掉。** YOLO 有自己的更新器，代码在 `src/core/update/updateChecker.ts`，写死了去 `Lapis0x0/obsidian-yolo` 的 Releases 下载新版本。Obsidian 自带的“检查插件更新”也会按插件 id `yolo` 去商店拉官方版。
+自用改写版最常见的坑是：**官方更新把你的 `main.js` 覆盖掉。** 覆盖的来源有两个：
 
-至少做到以下两点：
+- YOLO 自己的更新器：通过上游的发行渠道源（`distribution/feed-v1.json`）找到新版本，再去 `Lapis0x0/obsidian-yolo` 的 Releases 下载。
+- Obsidian 自带的“检查插件更新”：按插件 id 去社区商店拉官方版。
 
-1. **YOLO 设置 → 其他 → 维护 → 更新方式 → 选「不提醒」**。默认的「提醒我」会提前下载好官方版；选「自动更新」会直接覆盖。
-2. **以后不要在 Obsidian 里点“更新全部插件”**，或者更新时手动跳过 YOLO。
+这两处都已经在源码里处理好了：
 
-想更彻底，可以把它改成一个独立的插件：
-
-| 改动 | 位置 | 说明 |
+| 改动 | 位置 | 效果 |
 |---|---|---|
-| 改插件 id 和名称 | `manifest.json` 的 `id`、`name`，例如 `yolo-xox` / `YOLO (XOX)` | Obsidian 就不会再把它当成官方 YOLO 去更新。插件设置 `data.json` 跟着文件夹走；知识库向量存在 IndexedDB 里，按库区分 |
-| 关掉或改指向更新源 | `src/core/update/updateChecker.ts` 的 releases 地址 | 改成你自己 fork 的 Releases，或者让检查直接返回“无更新” |
-| 发行渠道源 | `src/core/distribution/distributionFeedClient.ts` | 同理，指向上游的 `distribution/feed-v1.json` |
-| 运行组件下载 | `src/core/runtime-components/runtimeComponentManifest.ts` | 分词器、PDF、Bash、嵌入引擎从上游 Releases 下载，并按 sha256 校验。一般**不用改** |
+| 插件 id 改成 `yolo-xox`，名称改成 `YOLO (XOX)` | `manifest.json` | 社区商店里没有这个 id，Obsidian 的“检查更新”不会再拉官方 YOLO |
+| 关闭核心自更新：`CORE_SELF_UPDATE_ENABLED = false` | `src/core/update/pluginUpdater.ts` | `canSelfUpdate()` 恒为 false：不下载、不安装、不“自动修复安装”（自动修复同样会下载官方版来覆盖） |
+| 不再检查核心新版本 | `src/main.ts` 的 `runUpdateCheck()` | 不弹“有新版本”提示；设置里的「更新方式」对核心不再起作用 |
 
-> 改了 id 之后，仍然不要同时启用官方 YOLO 和你的版本。两者注册的视图类型、命令名相同，会冲突。
+**模块更新没有关**：学习模式、白板等官方模块仍然可以从发行渠道安装和更新。它们独立发布，不会覆盖插件本体。
+
+以后想恢复官方更新，把 `CORE_SELF_UPDATE_ENABLED` 改回 `true` 就行。但即使恢复，下载的也还是上游的官方版本。想换成你自己的发布源，就改 `src/core/distribution/distributionFeedClient.ts` 和 `src/core/update/updateChecker.ts` 里的上游地址。
+
+**改 id 带来的影响（第一次启用前请了解）：**
+
+- 插件文件夹仍然是 `.obsidian/plugins/obsidian-yolo/`（这是 subtree 的路径，改了就没法同步上游）。Obsidian 不要求文件夹名和 id 一致。插件设置 `data.json` 跟着文件夹走，**原有设置会保留**。
+- **快捷键需要重新绑定**：Obsidian 的命令 id 带插件 id 前缀，会从 `yolo:…` 变成 `yolo-xox:…`。
+- **OAuth 登录凭据**（ChatGPT、Gemini、Copilot、MCP OAuth）存在 `.obsidian/plugins/<插件id>/` 下，也就是 `.obsidian/plugins/yolo-xox/`，而不在插件文件夹里，这是上游本来的设计。如果用过这些登录，换 id 后需要重新登录一次。库根的 `.gitignore` 已经忽略了 `yolo-xox/` 和 `yolo/` 这两个目录，凭据不会被提交。
+- 不要同时启用官方 YOLO 和你的版本，也不要和 Smart Composer 同时启用：它们注册的视图类型相同，会冲突。
+- 运行组件（分词器、PDF、Bash、嵌入引擎）仍然从上游 Releases 下载，并按 sha256 校验，**不用改**。
 
 ---
 
@@ -246,7 +253,7 @@ MCP 只能在桌面端用，手机上整块隐藏。
 | 知识库检索 | `src/core/rag/` |
 | MCP | `src/core/mcp/` |
 | 设置页 | `src/settings/SettingTab.tsx`；**新增设置项要加迁移**：`src/settings/schema/migrations/` |
-| 更新器（防覆盖） | `src/core/update/` |
+| 更新器（防覆盖，开关是 `CORE_SELF_UPDATE_ENABLED`） | `src/core/update/pluginUpdater.ts` |
 | 界面文案（中文） | `src/i18n/` |
 
 建议的改写流程：
@@ -277,7 +284,7 @@ git subtree pull --prefix=.obsidian/plugins/obsidian-yolo yolo-upstream main --s
 |---|---|
 | 启用后报错或白屏 | 先确认 Smart Composer 已禁用；再看开发者控制台（`Cmd/Ctrl+Shift+I`） |
 | 改了代码但界面没变 | 确认重新执行了 `npm run build` 或 `npm run dev`，并重载了插件 |
-| 重启后改动消失 | 多半是被官方更新覆盖了，回到第 3 节检查 |
+| 重启后改动消失 | 确认 `manifest.json` 的 id 是 `yolo-xox`，并且库里没有另一份官方 YOLO |
 | DeepSeek 请求超时 | 调大主请求超时；或者切 `deepseek-v4-flash`；或者降低推理强度 |
 | Agent 多轮工具调用报 thinking 相关错误 | DeepSeek 提供商的 API 类型切到 `anthropic` |
 | 知识库只能做关键词检索 | 嵌入模型没设好，或者没点「设为当前」，或者嵌入引擎组件没启用 |
