@@ -13,6 +13,7 @@ type KnownChatModelCapability = OpenRouterChatModelCapability
 // pin a capability we know the OpenRouter entry gets wrong.
 const KNOWN_MODEL_CAPABILITIES: Record<string, KnownChatModelCapability> = {
   ...OPENROUTER_MODEL_CAPABILITIES,
+  'claude-haiku-5-5': { context: 1000000, modalities: ['text', 'vision'] },
   'claude-opus-4-1': { context: 200000, modalities: ['text', 'vision'] },
   'claude-opus-4-0': { context: 200000, modalities: ['text', 'vision'] },
   'claude-sonnet-4-0': { context: 200000, modalities: ['text', 'vision'] },

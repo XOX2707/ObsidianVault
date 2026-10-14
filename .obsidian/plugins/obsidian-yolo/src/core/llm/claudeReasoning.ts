@@ -96,8 +96,9 @@ const CLAUDE_FAMILY_VERSION_PATTERN =
 
 /**
  * Whether the model binds each thinking block's signature to everything sent
- * before it (Opus 5.5, Fable 5.1, Mythos 5.1 and later): a request that
- * changes that prefix must tell the API what to do with the stale blocks. A
+ * before it (Opus 5.5, Sonnet 5.5, Haiku 5.5, Fable 5.1, Mythos 5.1 and
+ * later): a request that changes that prefix must tell the API what to do
+ * with the stale blocks. A
  * Claude id this cannot place is a newer model and is treated as binding.
  */
 export function claudeBindsThinkingToPrefix(modelId: string): boolean {
@@ -107,6 +108,8 @@ export function claudeBindsThinkingToPrefix(modelId: string): boolean {
   const version = Number(match[2]) + Number(match[3] ?? 0) / 10
   switch (match[1]) {
     case 'opus':
+    case 'sonnet':
+    case 'haiku':
       return version >= 5.5
     case 'fable':
     case 'mythos':
