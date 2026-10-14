@@ -923,7 +923,7 @@ export function useChatStreamManager({
         error instanceof LLMModelNotFoundException
       ) {
         new ErrorModal(app, 'Error', error.message, error.rawError?.message, {
-          showSettingsButton: true,
+          settingsTabId: plugin.manifest.id,
         }).open()
       } else {
         console.error('Failed to generate response', error)

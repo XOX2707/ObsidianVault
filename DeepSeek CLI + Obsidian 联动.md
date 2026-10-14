@@ -40,14 +40,16 @@ version: 0.5.0
       "headers": { "Authorization": "Bearer <Local REST API key>" }
     },
     "vault-fs": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/ObsidianVault"]
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-filesystem", "C:/Users/XW/source/Obsidian Default Repo"]
     }
   }
 }
 ```
 
-- 第一种需要 Obsidian 侧有一个 MCP 端点，比如 Local REST API 插件加一个 MCP 桥接插件或服务。具体地址和端口以所用插件为准，上面只是示意。
+- 第一种需要 Obsidian 侧有一个 MCP 端点，比如 Local REST API 插件加一个 MCP 桥接插件或服务。具体地址和端口以所用插件为准，上面只是示意。**更推荐直接用 YOLO 自带的 MCP 服务**，见 [[YOLO 改写与配置文档]] 第 7.2 节。
+- **Windows 注意**：deepseek-cli 启动本地 MCP 进程时不经过 shell（源码 `dist/mcp.js` 直接 `spawn(command, args)`）。所以 `npx` 这类 `.cmd` 命令不能直接写在 `command` 里，否则会报 `ENOENT` 或 `EINVAL`。要像上面那样写成 `"command": "cmd"`，`args` 以 `"/c", "npx", ...` 开头。
+- JSON 里的 Windows 路径用正斜杠 `/`；如果用反斜杠，要写成双反斜杠 `\\`。
 - 只想读写文件的话，其实不需要 MCP，直接在 vault 目录里运行 `deepseek` 就行。
 
 ## 局限（读源码发现）

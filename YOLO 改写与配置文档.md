@@ -49,9 +49,11 @@ updated: 2026-10-14
 ## 2. 在本机构建并加载
 
 > 前提：Node.js ≥ 20（导入时用 Node 22 + npm 10 实测构建通过），并且已经把本仓库 clone 到电脑上，作为 Obsidian 的库来打开。
+>
+> 本文的命令以 **Windows PowerShell** 为准。你的库在 `C:\Users\XW\source\Obsidian Default Repo`，路径里有空格，**必须加引号**。macOS/Linux 用户把路径换成自己的即可。
 
-```bash
-cd <你的库>/.obsidian/plugins/obsidian-yolo
+```powershell
+cd "C:\Users\XW\source\Obsidian Default Repo\.obsidian\plugins\obsidian-yolo"
 npm ci            # 按 package-lock 安装依赖，第一次需要几分钟
 npm run build     # 生产构建：类型检查 + 样式 + 运行组件 + 模块 + main.js
 ```
@@ -65,18 +67,21 @@ npm run build     # 生产构建：类型检查 + 样式 + 运行组件 + 模块
 
 ### 边改边看（开发模式）
 
-```bash
-cd <你的库>/.obsidian/plugins/obsidian-yolo
-OBSIDIAN_PLUGIN_DIR="$PWD" npm run dev
+```powershell
+cd "C:\Users\XW\source\Obsidian Default Repo\.obsidian\plugins\obsidian-yolo"
+$env:OBSIDIAN_PLUGIN_DIR = (Get-Location).Path
+npm run dev
 ```
 
-- **一定要带上 `OBSIDIAN_PLUGIN_DIR="$PWD"`。** 上游的 `scripts/sync-dev-artifacts.mjs` 默认把 `git rev-parse --git-common-dir` 所在目录当作插件目录。上游的做法是插件目录本身就是一个 git 仓库。但在我们这里，它会算出**库根目录**，然后往库根复制 `main.js`。把这个变量设为当前目录后，脚本发现源目录和目标目录相同，就会跳过复制。
+macOS/Linux（bash/zsh）的写法是：`OBSIDIAN_PLUGIN_DIR="$PWD" npm run dev`。
+
+- **一定要先设置 `OBSIDIAN_PLUGIN_DIR`，让它等于插件目录本身。** PowerShell 里用 `$env:` 设置的变量只在当前窗口有效，每次新开终端都要重新设一次。上游的 `scripts/sync-dev-artifacts.mjs` 默认把 `git rev-parse --git-common-dir` 所在目录当作插件目录。上游的做法是插件目录本身就是一个 git 仓库。但在我们这里，它会算出**库根目录**，然后往库根复制 `main.js`。把这个变量设为当前目录后，脚本发现源目录和目标目录相同，就会跳过复制。
 - `npm run ob` 是上游作者在 macOS 上的专用脚本，会退出并重开 Obsidian，不要用。
-- 建议装 [Hot Reload](https://github.com/pjeby/hot-reload) 插件实现自动重载；不装的话，在开发者控制台按 `Cmd/Ctrl+R` 刷新。
+- 建议装 [Hot Reload](https://github.com/pjeby/hot-reload) 插件实现自动重载；不装的话，在开发者控制台按 `Ctrl+R`（macOS 是 `Cmd+R`）刷新。
 
 ### 提交前的检查（和上游 CI 一致）
 
-```bash
+```powershell
 npm run type:check
 npm run lint:check
 npm test
@@ -266,11 +271,13 @@ MCP 只能在桌面端用，手机上整块隐藏。
 
 ## 9. 同步上游更新
 
-```bash
-cd <你的库>          # 仓库根目录，不是插件目录
+```powershell
+cd "C:\Users\XW\source\Obsidian Default Repo"   # 仓库根目录，不是插件目录
 git remote add yolo-upstream https://github.com/Lapis0x0/obsidian-yolo.git   # 只需执行一次
 git subtree pull --prefix=.obsidian/plugins/obsidian-yolo yolo-upstream main --squash
 ```
+
+`--prefix` 后面的路径保持用正斜杠 `/`，Windows 下也一样。
 
 - 有冲突时按普通 merge 处理，你自己的改动以提交为单位，比较好对照。
 - 合并后重新 `npm ci && npm run build`。
@@ -282,11 +289,12 @@ git subtree pull --prefix=.obsidian/plugins/obsidian-yolo yolo-upstream main --s
 
 | 现象 | 处理 |
 |---|---|
-| 启用后报错或白屏 | 先确认 Smart Composer 已禁用；再看开发者控制台（`Cmd/Ctrl+Shift+I`） |
+| 启用后报错或白屏 | 先确认 Smart Composer 已禁用；再看开发者控制台（`Ctrl+Shift+I`，macOS 是 `Cmd+Option+I`） |
 | 改了代码但界面没变 | 确认重新执行了 `npm run build` 或 `npm run dev`，并重载了插件 |
 | 重启后改动消失 | 确认 `manifest.json` 的 id 是 `yolo-xox`，并且库里没有另一份官方 YOLO |
 | DeepSeek 请求超时 | 调大主请求超时；或者切 `deepseek-v4-flash`；或者降低推理强度 |
 | Agent 多轮工具调用报 thinking 相关错误 | DeepSeek 提供商的 API 类型切到 `anthropic` |
 | 知识库只能做关键词检索 | 嵌入模型没设好，或者没点「设为当前」，或者嵌入引擎组件没启用 |
-| 库根出现 `main.js` | 运行 `npm run dev` 时没带 `OBSIDIAN_PLUGIN_DIR="$PWD"`，删掉那个文件即可 |
+| 库根出现 `main.js` | 运行 `npm run dev` 前没设置 `OBSIDIAN_PLUGIN_DIR`（PowerShell：`$env:OBSIDIAN_PLUGIN_DIR = (Get-Location).Path`），删掉那个文件即可 |
+| API Key 报错弹窗里点「Open Settings」没反应 | 上游的遗留问题：按钮写死了旧 id `next-composer`。**已修复**，现在会打开 YOLO (XOX) 的设置页 |
 | 手机上没有 MCP、本地嵌入、CLI | 这些设计上只支持桌面端 |

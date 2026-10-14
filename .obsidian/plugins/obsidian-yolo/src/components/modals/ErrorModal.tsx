@@ -4,7 +4,8 @@ import { ReactModal } from '../common/ReactModal'
 
 type ErrorModalOptions = {
   showReportBugButton?: boolean
-  showSettingsButton?: boolean
+  /** Settings tab to open from the error, i.e. the plugin's `manifest.id`. */
+  settingsTabId?: string
 }
 
 type ErrorModalComponentProps = {
@@ -64,7 +65,7 @@ function ErrorModalComponent({
             Report Bug
           </button>
         )}
-        {options.showSettingsButton && (
+        {options.settingsTabId && (
           <button
             className="mod-cta"
             onClick={() => {
@@ -72,7 +73,7 @@ function ErrorModalComponent({
               // @ts-expect-error: setting property exists in Obsidian's App but is not typed
               app.setting.open()
               // @ts-expect-error: setting property exists in Obsidian's App but is not typed
-              app.setting.openTabById('next-composer')
+              app.setting.openTabById(options.settingsTabId)
             }}
           >
             Open Settings
