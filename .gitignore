@@ -1,0 +1,8 @@
+# Local MCP config (contains tokens)
+.mcp.json
+.deepseek/mcp.json
+
+# YOLO stores OAuth credentials (ChatGPT/Gemini/Copilot/MCP) under
+# .obsidian/plugins/<manifest id>/, which differs from the plugin folder
+.obsidian/plugins/yolo-xox/
+.obsidian/plugins/yolo/
