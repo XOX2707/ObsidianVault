@@ -17,6 +17,8 @@
 | 文档 | 内容 |
 |---|---|
 | [使用说明](<使用说明.md>) | **从这里开始**：安装、三种使用方式、配置要点、费用、排错 |
+| [CLAUDE.md](CLAUDE.md) | 写给 AI 的项目说明和规则，本地 Claude Code 启动时自动读取 |
+| [AI协作/交接日志](<AI协作/交接日志.md>) | 云端 Claude 和本地 Claude Code 的交接信箱 |
 | [项目进度与待办](<项目进度与待办.md>) | 已完成事项和待办清单 |
 | [YOLO 改写与配置文档](<YOLO 改写与配置文档.md>) | YOLO (XOX) 插件的完整手册 |
 | [DeepSeek CLI + Obsidian 联动](<DeepSeek CLI + Obsidian 联动.md>) | deepseek-cli 的作用、配置和局限 |
