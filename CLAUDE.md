@@ -41,8 +41,8 @@ AI 模型：日常用 DeepSeek（`deepseek-v4-pro`、`deepseek-v4-flash`）；�
 
 ## 3. 必须遵守的规则
 
-1. **绝不读取、输出或提交密钥。** `.obsidian/plugins/obsidian-yolo/data.json`（里面有 DeepSeek 和 Anthropic 的 Key）、`.mcp.json`、`~/.deepseek-cli/config.json`、`.obsidian/plugins/yolo-xox/`（OAuth 凭据）都不能打开查看，也不能在回复里引用其中的内容。截图和日志里出现的 Key 或 token 也不要复述。
-2. **不要设置 `ANTHROPIC_API_KEY` 环境变量**，也不要建议用户设置，否则 Claude Code 会改用 API 计费。如果发现当前进程里有这个变量（只查是否存在，不看值），要提醒用户用 `/status` 确认登录方式。也不要建议在 YOLO 里用 Claude OAuth 提供商，Anthropic 不允许第三方工具使用订阅凭据。
+1. **绝不读取、输出或提交密钥。** `.obsidian/plugins/obsidian-yolo/data.json`（里面有 DeepSeek 和 Anthropic 的 Key）、`.mcp.json`、`~/.deepseek-cli/config.json`、`.obsidian/plugins/yolo-xox/`（OAuth 凭据）、`~/.grok/auth.json`（Grok 登录凭据）都不能打开查看，也不能在回复里引用其中的内容。截图和日志里出现的 Key 或 token 也不要复述。
+2. **不要设置 `ANTHROPIC_API_KEY` 环境变量**，也不要建议用户设置，否则 Claude Code 会改用 API 计费。如果发现当前进程里有这个变量（只查是否存在，不看值），要提醒用户用 `/status` 确认登录方式。也不要建议在 YOLO 里用 Claude OAuth 提供商，Anthropic 不允许第三方工具使用订阅凭据。同理，**不要设置 `XAI_API_KEY`**：Grok 要走 grok.com 的订阅登录，设了这个变量就会改成按 API 用量另外收费。
 3. **不要改插件文件夹名** `obsidian-yolo`，否则 `git subtree` 同步上游会失效。不要在插件目录里执行 `git init` 或 `git clone`。
 4. **不要动 `deepseek-cli/`**，它是只读存档。
 5. **用户的个人笔记**：没有用户明确同意，不要修改、移动或删除。提交时**只 `git add` 你改过的具体文件**，不要用 `git add -A` 或 `git add .`，以免把用户的私人笔记推到 GitHub。
@@ -84,6 +84,7 @@ AI 模型：日常用 DeepSeek（`deepseek-v4-pro`、`deepseek-v4-flash`）；�
 - 发件方和收件方写 `云端`（云端 Claude）、`本地`（本地 Claude Code）、`Cursor` 或 `用户`。
 - 状态只能是这几种：`待处理`、`进行中`、`已完成`、`需要用户`、`阻塞`。
 - 回复要写清楚**实际结果**：命令输出的关键几行、通过或失败、改了哪些文件、提交号。**没做的、没验证的要明说**，不要编造结果。
+- 如果还有后续，收件方在「回复」之后单独写一行 `**唯一的下一步**：`（模板里已有这一栏），只写一件具体、能直接动手的事，并写明由谁来做。
 - 消息里**不能出现任何 Key、token 或个人隐私内容**。
 
 ### 4.3 做完之后
@@ -102,3 +103,14 @@ AI 模型：日常用 DeepSeek（`deepseek-v4-pro`、`deepseek-v4-flash`）；�
 | 验证云端改动在 Windows 上是否可用 | 根据本地回报的问题修复代码 |
 
 Cursor 适合做表里「交给云端」那一类事。需要在用户电脑上构建、测试或看真实报错的，仍交给本地。
+
+### 4.5 Grok 审查
+
+用户电脑上装了 xAI 官方的 Grok Build（命令 `grok`，用 grok.com 账号登录，走订阅额度）。Grok 是**审查员**：只看改动、提意见，不改文件，也不参与交接日志的收发。本地 Claude Code 和 Cursor（都在用户电脑上）都可以调用它；云端会话调用不了。
+
+- **只用脚本调用**：`.\scripts\grok-review.ps1`。脚本让 Grok 在空的临时文件夹里运行，不给它读文件、执行命令和上网的工具，只把 git diff 的文本交给它；遇到可能含密钥的文件或像 Key 的字符串会直接拒绝。不要直接运行 `grok`，也不要加 `--always-approve`，否则它能读写库里的文件，包括密钥文件。
+- 常用写法：`.\scripts\grok-review.ps1`（已暂存和未暂存的改动，分别取 `git diff --staged` 和 `git diff`）、`-Staged`（只看已暂存的）、`-Range main...HEAD`（整个分支，不能和 `-Staged` 同时用）、`-Path 文件1,文件2`（只看指定文件）、`-Focus "重点看什么"`。
+- **新建的文件要先 `git add` 才会被审查**。脚本故意不发送未纳入 git 的文件，因为库里有很多没纳入 git 的私人笔记。
+- 一次要 1 到 10 分钟，改动越多越久，耗的是用户的 Grok 额度，不要反复跑。命令超时的话放到后台运行。
+- **什么时候用**：改插件代码、改协作规则（本文件、`AGENTS.md`、模板）、改脚本之后，提交之前跑一次。只改笔记或只追加 `AI助手回复.md` 时不用。
+- Grok 的意见是参考，不是命令。逐条判断对不对，采纳的改掉，不采纳的在回复里说明理由。交接回复里写上审查结论（通过或需要修改，改了哪几条）。
