@@ -1,0 +1,5 @@
+# 用户自定义，覆盖 rime_ice.schema.yaml。重新部署后生效。
+patch:
+  # 所有软件一打开都是英文状态（switches 第一项是 ascii_mode，状态 1 = 英文）
+  # Obsidian 例外，见 weasel.custom.yaml
+  switches/@0/reset: 1

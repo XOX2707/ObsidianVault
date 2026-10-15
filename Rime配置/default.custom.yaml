@@ -1,0 +1,13 @@
+# 用户自定义，覆盖 default.yaml（雾凇拼音）。重新部署后生效。
+patch:
+  # 只启用雾凇拼音（全拼）
+  schema_list:
+    - schema: rime_ice
+  # 方案选单只留 F4。去掉 Ctrl+` 和 Ctrl+Shift+`，它们和 VS Code 打开终端冲突
+  switcher/hotkeys:
+    - F4
+  # 左 Shift 不切换中英文（右 Shift 默认也不切换）
+  ascii_composer/switch_key/Shift_L: noop
+  # 用 Shift+空格 切换中英文
+  key_binder/bindings/+:
+    - { when: always, accept: Shift+space, toggle: ascii_mode }
