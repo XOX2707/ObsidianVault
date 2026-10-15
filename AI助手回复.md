@@ -77,3 +77,5 @@
 3. **稳定后**：Linter、Lazy Plugin Loader、Remember Cursor Position、Style Settings、汉化；手机再加 Editing Toolbar  
 
 装完若要我帮写 Dataview 查询块或 Templater 交接日志模板，直接说即可。
+
+配置步骤已写成任务书，交给本地 Claude 时说：「按 `AI协作/任务书·插件配置.md` 配置插件」。交接日志入口是 `#002`。
