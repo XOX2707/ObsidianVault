@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Watches the Claude and DeepSeek status pages and prints one line per change:
 # overall status, non-operational components and incident updates for Claude
-# (Statuspage JSON API); headline and open incidents for DeepSeek (a FlashCat
-# page with no JSON API, read from its visible text). Lines that disappear
+# (Statuspage JSON API); unresolved incidents for DeepSeek (from the RSS feed
+# of its Flashduty-hosted page, which has no JSON API). Lines that disappear
 # are printed with "[已解除]". The first poll prints the current state as a
 # baseline. Built to run under Claude Code's Monitor tool, one event per line.
 #
@@ -37,10 +37,12 @@ for i in d.get("incidents", []):
 '
 }
 
-# DeepSeek's page is a FlashCat (Next.js) status page with no JSON API, so
-# read its visible text between the header and the event calendar: the
-# headline plus each open incident's title, latest update and state.
-poll_flashcat() {
+# DeepSeek's status page (hosted on Flashduty) has no JSON API, but it
+# publishes an RSS feed with one item per incident carrying the incident's
+# latest state. Report the incidents that are not resolved yet: title,
+# status, latest update and affected components. When one resolves, its line
+# disappears and the diff below reports it with "[已解除]".
+poll_deepseek_rss() {
   local name="$1" url="$2" out
   out=$(curl -sS -m 20 "$url" 2>&1) || {
     echo "fetch failed: ${out:0:120}"
@@ -48,28 +50,48 @@ poll_flashcat() {
   }
   printf '%s' "$out" | python3 -I -c '
 import html, re, sys
-t = sys.stdin.read()
-t = re.sub(r"<script[^>]*>.*?</script>|<style[^>]*>.*?</style>", " ", t, flags=re.S)
-lines = [html.unescape(l).strip() for l in re.sub(r"<[^>]+>", "\n", t).split("\n")]
-lines = [l for l in lines if l and l != "·"]
-if "Powered by" not in lines:
+import xml.etree.ElementTree as ET
+try:
+    root = ET.fromstring(sys.stdin.read())
+except ET.ParseError:
     print("UNPARSEABLE"); sys.exit()
-lines = lines[lines.index("Powered by") + 1 :]
-# The page sometimes renders without the calendar, so stop at whichever
-# section comes first after the incidents.
-ends = [lines.index(m) for m in ("Event calendar", "System status", "View historical events") if m in lines]
-lines = lines[: min(ends)] if ends else lines
-# Drop the ticking "Ongoing for N hours" so it does not count as a change.
-print("\n".join(l for l in lines if not l.startswith("Ongoing for")))
+
+def text(fragment):
+    plain = re.sub(r"<[^>]+>", "\n", html.unescape(fragment or ""))
+    return [l.strip() for l in plain.split("\n") if l.strip()]
+
+open_incidents = []
+for item in root.findall("./channel/item"):
+    # The description is "<strong>Status:</strong> x" then the update text
+    # then "<strong>Affected components:</strong> y", so a label and its
+    # value come out as separate lines.
+    status, update, affected, field = "?", [], "", None
+    for line in text(item.findtext("description")):
+        if line in ("Status:", "Affected components:"):
+            field = line
+        elif field == "Status:":
+            status, field = line, None
+        elif field == "Affected components:":
+            affected, field = line, None
+        else:
+            update.append(line)
+    if status.lower() in ("resolved", "completed"):
+        continue
+    open_incidents.append(
+        "incident|%s [%s] %s | 影响: %s"
+        % (item.findtext("title"), status, " ".join(update)[:200], affected or "?")
+    )
+print("overall|" + ("%d 个未解决的事件" % len(open_incidents) if open_incidents else "没有未解决的事件"))
+print("\n".join(open_incidents))
 '
 }
 
 while true; do
   for pair in "Claude|https://status.claude.com/api/v2/summary.json" \
-              "DeepSeek|https://status.deepseek.com/"; do
+              "DeepSeek|https://status.deepseek.com/feed.rss"; do
     name="${pair%%|*}"; url="${pair#*|}"
     if [ "$name" = "DeepSeek" ]; then
-      cur=$(poll_flashcat "$name" "$url")
+      cur=$(poll_deepseek_rss "$name" "$url")
     else
       cur=$(poll "$name" "$url" | sort)
     fi
