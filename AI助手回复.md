@@ -295,3 +295,80 @@ updated: 2026-10-14
 - 告诉我你想拿哪篇试。
 - 试的方法：打开那篇笔记，Ctrl+P 输入「格式化当前文件」回车。它会把开头 YAML 里的 updated 改成今天的日期（没有就加一行），其他内容不应该变。
 - 不要用「格式化所有文件」，那会改动整个库。
+
+---
+
+## 2026-10-15 · 给 Cursor 的提醒：从最新的 main 开工（本地 Claude Code → Cursor）
+
+Cursor 你好，我是本地的 Claude Code。你最近两次提交（插件任务书、主题任务书）都是从旧版本开始写的，出了两个问题：
+
+1. **交接编号撞号**：你写的 #002、#003，`main` 上已经有了。插件那条我改成了 #003，主题这条会记成 **#004**。
+2. **看不到最新约定**：`AGENTS.md`、本文件已纳入 git、交接日志的最新编号，都在 `main` 上，你的分支里没有。
+
+**原因**：GitHub 上这个仓库的默认分支是 `claude/practical-ramanujan-a8k1qf`，不是 `main`，比 `main` 落后 11 个提交。你从默认分支开工，就看不到 `main` 上的东西。已经请用户把默认分支改成 `main`。
+
+**以后请这样做**：
+
+- 开工前先切到最新的 `main`，在 `main` 的基础上开新分支。
+- 先读 `AGENTS.md` 和 `CLAUDE.md`。
+- 交接编号：看 `main` 上 `AI协作/交接日志.md` 最后一条的编号，接着往下排。
+- 本文件（`AI助手回复.md`）和交接日志只在**末尾追加**，标题写明是谁写的。
+
+---
+
+## 2026-10-15 · Obsidian 中文论坛社区主题推荐（按本库需求）（Cursor 写于分支 cursor/theme-recs-chinese-forum-af14，本地搬到 main）
+
+> 主题一次只能启用一个。下面按「这个库怎么用」筛选，不是把论坛里出现过的名字都装上。
+> 热度用两套依据：中文论坛帖，以及 GitHub star（2026-10-15 查看）。Obsidian 官方没有公开主题下载量接口。
+
+### 本库对主题的要求
+
+| 要求 | 原因 |
+|---|---|
+| 长中文文档、表格、Callout 要清楚 | 《使用说明》等文档大量使用 Callout 和表格 |
+| 少折腾 | 插件任务的原则是非必要不装；主题同理 |
+| 不破坏「可读行宽」 | 长文需要限制行宽 |
+| YOLO 侧边栏还要能用 | 主题不要靠藏界面来「变干净」 |
+| 电脑和手机都能看 | 外观会随 Obsidian Sync 同步（见《多设备与 Obsidian Sync》） |
+| 现在还是默认主题 | 仓库里没有提交过 `appearance.json`，本机那份不要推进 Git |
+
+### 主推荐：Minimal
+
+社区里的名字是 **Minimal**，作者 kepano，仓库 `kepano/obsidian-minimal`。不要装成 Minimal Edge、Minimal Dracula 这类名字相近的主题。
+
+| 依据 | 内容 |
+|---|---|
+| 论坛 | [求一个清爽的不费眼的主题 #8712](https://forum-zh.obsidian.md/t/topic/8712)：多人直接推荐 Minimal，评价是简洁、实用。侧边栏字小可以用配套设置放大 |
+| 维护 | GitHub 5428 star，2026-10-06 仍在更新。官方文档写明支持桌面、手机、平板，并单独照顾了 Dataview（本库插件推荐里有它） |
+| 和本库的匹配 | 朴素，不靠背景图和彩色文件夹。没有 Blue Topaz 那种黄色 Callout 被旋转的问题 |
+| 配套 | 插件 **Minimal Theme Settings**（id `obsidian-minimal-settings`）。Style Settings 可选，第一周不要用它改配色 |
+
+启用后保持默认配色，不要开彩色标题，不要装 Hider（会把工具栏藏起来）。明暗跟随系统。界面字体用 Windows 已有的中文字体，不要另外下载字体。
+
+### 备选（先用过 Minimal，不满意再换一个）
+
+| 主题 | 仓库 | star / 最近更新 | 什么时候换 | 论坛依据 |
+|---|---|---|---|---|
+| **Things** | `colineckert/obsidian-things` | 1024 / 2026-06-07 | 觉得 Minimal 太素，又不想花时间调 | [#8712](https://forum-zh.obsidian.md/t/topic/8712) 推荐它清爽；[#17747](https://forum-zh.obsidian.md/t/topic/17747) 里「可读行宽」仍然有效。搜索时认这个仓库，不要装成 Things 3 |
+| **Border** | `akifyss/obsidian-border` | 2517 / 2026-10-06 | 想要卡片边框，但仍要持续更新的主题 | 中文论坛有人把它当日常主题（[#53448](https://forum-zh.obsidian.md/t/topic/53448)）。装饰比 Minimal 多 |
+| **Baseline** 或 **Cupertino** | `svnaxis/obsidian-baseline`、`svnaxis/obsidian-cupertino` | 1559 / 2026-10-12；1277 / 2026-10-08 | 想要 2026 年还在更新的朴素主题 | [两年半使用排行 #62728](https://forum-zh.obsidian.md/t/topic/62728)（2026-07-22）：Baseline 在作者 2026 年使用时长前五；若去掉作者自己的 Brutal Gum，Cupertino 会进前五 |
+
+### 论坛里很有名，但这库先不选
+
+| 主题 | 为什么先不选 |
+|---|---|
+| **Blue Topaz**（`pkm-er/Blue-Topaz_Obsidian-css`，1640 star，2026-08 仍更新） | 中文社区最有名的主题之一（[介绍帖 #1664](https://forum-zh.obsidian.md/t/topic/1664)）。默认观感偏乱，要靠 Style Settings 才能清爽（#8712）。有人一调就是一个半小时（[#41559](https://forum-zh.obsidian.md/t/topic/41559)）。会让「可读行宽」失效（#17747）。黄色 Callout 会被旋转，2025–2026 年论坛还在修（[#52775](https://forum-zh.obsidian.md/t/topic/52775)）。本库说明文档大量使用 Callout |
+| **AnuPpuccin**（`AnubisNekhet/AnuPpuccin`，3420 star） | [#62728](https://forum-zh.obsidian.md/t/topic/62728) 里个人累计使用最长（61 天）。仓库 2024-12-01 之后没有再推送。本库 Obsidian 是 1.14，隔了太久，不拿它当第一套 |
+| **Shimmering Focus** | 同一篇排行里作者写明装饰性强、风格独特。不适合这批说明文档 |
+| **Composer、Dawn、Iridium** | 出现在 #62728 的个人时长榜上，但 star 只有几十。那是一个人的 git 记录，不是社区热门 |
+| **Brutal Gum** | 排行作者自己开发的主题，文中已声明排名会偏高 |
+
+#62728 的数字是作者从自己的 `appearance.json` git 历史算出来的使用天数，不是全论坛投票，也不是商店下载量。
+
+### 不要做的事
+
+- 一次启用多个主题，或先把备选全装上。
+- 为了好看加一堆 CSS 片段。排行作者自己也是打补丁才把主题调顺的。
+- 把 `appearance.json`、`.obsidian/themes/` 提交进这个仓库。外观交给 Obsidian Sync。
+
+配置步骤在 `AI协作/任务书·主题配置.md`。交给本地 Claude 时说：「按 `AI协作/任务书·主题配置.md` 配置主题」。交接日志入口是 `#004`（原写 #003，与 main 上的插件配置撞号，本地改号）。
