@@ -23,8 +23,11 @@ poll() {
   }
   printf '%s' "$out" | python3 -I -c '
 import json, sys
+# Read raw bytes and write UTF-8: -I ignores PYTHONIOENCODING, and on Windows
+# the default text streams use the ANSI code page, which mangles Chinese.
+sys.stdout.reconfigure(encoding="utf-8")
 try:
-    d = json.load(sys.stdin)
+    d = json.loads(sys.stdin.buffer.read())
 except Exception:
     print("UNPARSEABLE"); sys.exit()
 print("overall|" + d.get("status", {}).get("description", "?"))
@@ -51,8 +54,9 @@ poll_deepseek_rss() {
   printf '%s' "$out" | python3 -I -c '
 import html, re, sys
 import xml.etree.ElementTree as ET
+sys.stdout.reconfigure(encoding="utf-8")  # see poll() above
 try:
-    root = ET.fromstring(sys.stdin.read())
+    root = ET.fromstring(sys.stdin.buffer.read())
 except ET.ParseError:
     print("UNPARSEABLE"); sys.exit()
 
@@ -97,22 +101,26 @@ while true; do
     fi
     prev_file="$STATE_DIR/$name"
     prev=$(cat "$prev_file" 2>/dev/null || true)
-    # A failed fetch says nothing about the service: report it once and keep
-    # the last good state, so a network blip is not read as "everything
-    # resolved" followed by everything reappearing.
+    # A failed fetch says nothing about the service: keep the last good state,
+    # so a network blip is not read as "everything resolved" followed by
+    # everything reappearing. The file counts consecutive failures; report
+    # only when they reach the threshold, so a single timeout stays quiet.
     fail_file="$STATE_DIR/$name.failing"
+    fails=$(cat "$fail_file" 2>/dev/null || true); fails=${fails:-0}
     case "$cur" in
       "fetch failed"*|UNPARSEABLE)
-        if [ ! -e "$fail_file" ]; then
-          echo "$name: 暂时无法读取状态（${cur:0:100}），保留上一次结果，恢复后再比较"
-          : > "$fail_file"
+        fails=$((fails + 1))
+        echo "$fails" > "$fail_file"
+        if [ "$fails" -eq "${STATUS_FAIL_THRESHOLD:-3}" ]; then
+          echo "$name: 连续 $fails 次无法读取状态（${cur:0:100}），保留上一次结果，恢复后再比较"
         fi
         continue
         ;;
     esac
     if [ -e "$fail_file" ]; then
       rm -f "$fail_file"
-      [ "$cur" = "$prev" ] && echo "$name: 已恢复读取，状态没有变化"
+      [ "$fails" -ge "${STATUS_FAIL_THRESHOLD:-3}" ] && [ "$cur" = "$prev" ] \
+        && echo "$name: 已恢复读取，状态没有变化"
     fi
     if [ "$cur" != "$prev" ]; then
       diff <(printf '%s\n' "$prev") <(printf '%s\n' "$cur") | grep '^[<>] ' \
