@@ -37,7 +37,7 @@ AI 模型：日常用 DeepSeek（`deepseek-v4-pro`、`deepseek-v4-flash`）；�
 - 改完插件后，要请用户在 Obsidian 里重新加载插件，你自己没法操作 Obsidian 的界面。
 - 笔记还通过 **Obsidian Sync** 同步到手机和其他电脑（见 `多设备与 Obsidian Sync.md`）。不要改 Obsidian 的同步设置；看到文件名带 “conflict” 的冲突副本，告诉用户，不要自己删。
 - 库根目录的 `.mcp.json`（不要打开）给 Claude Code 接上了 YOLO 的「外部 Agent 接入」，可以用 `mcp__yolo__vault_search` 按意思搜索笔记。要求 Obsidian 开着、开关打开着；工具没出现时，先用 ToolSearch 搜 `yolo`。
-- 用户看不懂终端里的 markdown 符号。比较长的回复和报告，**追加**到根目录的 `AI助手回复.md` 末尾（标题写 `## YYYY-MM-DD · 主题`），终端里只说要点。用户说“单独建个文件”时才新建文件。
+- 用户看不懂终端里的 markdown 符号。比较长的回复和报告，**追加**到根目录的 `AI助手回复.md` 末尾（标题写 `## YYYY-MM-DD · 主题`），终端里只说要点。用户说“单独建个文件”时才新建文件。这个文件纳入 git，也是本地 Claude Code 和 Cursor 互相留言的地方（`.gitattributes` 里设了 `merge=union`）；只在末尾追加，不要改别人写的段落，也不要写入 Key 或隐私内容。
 
 ## 3. 必须遵守的规则
 
