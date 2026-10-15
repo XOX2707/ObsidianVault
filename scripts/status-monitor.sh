@@ -18,7 +18,7 @@ mkdir -p "$STATE_DIR"
 poll() {
   local name="$1" url="$2" out
   out=$(curl -sS -m 20 "$url" 2>&1) || {
-    echo "$name: fetch failed: ${out:0:120}"
+    echo "fetch failed: ${out:0:120}"
     return
   }
   printf '%s' "$out" | python3 -I -c '
@@ -97,6 +97,23 @@ while true; do
     fi
     prev_file="$STATE_DIR/$name"
     prev=$(cat "$prev_file" 2>/dev/null || true)
+    # A failed fetch says nothing about the service: report it once and keep
+    # the last good state, so a network blip is not read as "everything
+    # resolved" followed by everything reappearing.
+    fail_file="$STATE_DIR/$name.failing"
+    case "$cur" in
+      "fetch failed"*|UNPARSEABLE)
+        if [ ! -e "$fail_file" ]; then
+          echo "$name: 暂时无法读取状态（${cur:0:100}），保留上一次结果，恢复后再比较"
+          : > "$fail_file"
+        fi
+        continue
+        ;;
+    esac
+    if [ -e "$fail_file" ]; then
+      rm -f "$fail_file"
+      [ "$cur" = "$prev" ] && echo "$name: 已恢复读取，状态没有变化"
+    fi
     if [ "$cur" != "$prev" ]; then
       diff <(printf '%s\n' "$prev") <(printf '%s\n' "$cur") | grep '^[<>] ' \
         | sed -e "s/^> /$name: /" -e "s/^< /$name: [已解除] /" | grep -v ': \[已解除\] $'
