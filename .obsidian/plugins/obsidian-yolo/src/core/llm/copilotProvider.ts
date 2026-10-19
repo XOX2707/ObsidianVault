@@ -159,6 +159,10 @@ export class CopilotProvider extends BaseLLMProvider<LLMProvider> {
         // Copilot's Messages gateway does not implement Anthropic betas, so
         // `thinking.block_binding` (and its beta header) stays out.
         thinkingBlockBinding: false,
+        // Not Anthropic's own endpoint: caching stays with the toggle in case
+        // the gateway rejects `cache_control`.
+        lockClaudePromptCaching: false,
+        extendedPromptCacheTtl: false,
       }),
     }
   }

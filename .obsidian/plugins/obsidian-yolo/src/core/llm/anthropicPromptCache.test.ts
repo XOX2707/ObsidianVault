@@ -186,3 +186,64 @@ describe('applyAnthropicPromptCache on a replayed reply', () => {
     ])
   })
 })
+
+describe('applyAnthropicPromptCache with extendedTtl', () => {
+  const EPHEMERAL_1H = { type: 'ephemeral', ttl: '1h' }
+
+  it('uses the 1-hour TTL for the prefix and 5 minutes for the tail', () => {
+    const out = applyAnthropicPromptCache(
+      {
+        system: 'sys',
+        tools: [{ name: 'a' }],
+        messages: [
+          { role: 'user', content: 'u1' },
+          { role: 'assistant', content: 'a1' },
+          { role: 'user', content: 'u2' },
+        ],
+      } as unknown as Payload,
+      { extendedTtl: true },
+    ) as unknown as {
+      system: Array<Record<string, unknown>>
+      tools: Array<Record<string, unknown>>
+      messages: Array<{ content: Array<Record<string, unknown>> }>
+    }
+    expect(out.system[0].cache_control).toEqual(EPHEMERAL_1H)
+    expect(out.tools[0].cache_control).toEqual(EPHEMERAL_1H)
+    expect(out.messages[1].content[0].cache_control).toEqual(EPHEMERAL_1H)
+    expect(out.messages[2].content[0].cache_control).toEqual(EPHEMERAL)
+  })
+
+  it('leaves only the rolling tail on the 5-minute TTL', () => {
+    const out = applyAnthropicPromptCache(
+      {
+        system: 'sys',
+        tools: [{ name: 'a' }],
+        messages: [
+          { role: 'user', content: 'u1' },
+          { role: 'user', content: 'u2' },
+        ],
+      } as unknown as Payload,
+      { extendedTtl: true },
+    ) as unknown as {
+      system: Array<Record<string, unknown>>
+      tools: Array<Record<string, unknown>>
+      messages: Array<{ content: Array<Record<string, unknown>> }>
+    }
+    // 1-hour entries must come before the 5-minute one: system, tools,
+    // second-to-last message, then the tail.
+    expect(out.system[0].cache_control).toEqual(EPHEMERAL_1H)
+    expect(out.tools[0].cache_control).toEqual(EPHEMERAL_1H)
+    expect(out.messages[0].content[0].cache_control).toEqual(EPHEMERAL_1H)
+    expect(out.messages[1].content[0].cache_control).toEqual(EPHEMERAL)
+  })
+
+  it('keeps the 5-minute TTL everywhere by default', () => {
+    const json = JSON.stringify(
+      applyAnthropicPromptCache({
+        system: 'sys',
+        messages: [{ role: 'user', content: 'u1' }],
+      } as unknown as Payload),
+    )
+    expect(json).not.toContain('"ttl"')
+  })
+})

@@ -922,7 +922,7 @@ export const it: DeepPartial<TranslationKeys> = {
       responseStreamingModeNonStreaming: 'Non streaming',
       promptCaching: 'Cache del prompt',
       promptCachingDesc:
-        "Cache effimera dei prompt Anthropic, attiva per impostazione predefinita. Riutilizza prompt di sistema, strumenti e cronologia tra i turni per ridurre i token di input. Le scritture in cache hanno un sovrapprezzo del 25%; le letture costano circa il 10% del normale. Disattivala solo se l'endpoint upstream rifiuta o gestisce male il campo cache_control.",
+        "Cache effimera dei prompt Anthropic, attiva per impostazione predefinita. Riutilizza prompt di sistema, strumenti e cronologia tra i turni per ridurre i token di input. I modelli Claude (tranne tramite GitHub Copilot) la usano sempre, indipendentemente da questo interruttore: la cronologia precedente resta in cache per 1 ora e l'ultimo turno per 5 minuti, così tornando a una conversazione lunga non viene riscritta tutta; le scritture costano 2x (1 ora) o 1,25x (5 minuti) l'input normale, le letture circa il 10% o meno. Gli altri modelli, e Claude tramite GitHub Copilot, seguono questo interruttore e usano solo la cache da 5 minuti (scritture 1,25x, letture circa il 10%). Disattivala solo se l'endpoint upstream rifiuta o gestisce male il campo cache_control.",
       customHeaders: 'Header personalizzati',
       customHeadersDesc:
         'Aggiungi header HTTP extra a tutte le richieste inviate tramite questo provider.',

@@ -1002,7 +1002,7 @@ export const en: TranslationKeys = {
       responseStreamingModeNonStreaming: 'Non-streaming',
       promptCaching: 'Prompt caching',
       promptCachingDesc:
-        'Anthropic ephemeral prompt caching, on by default. Reuses system prompt, tools, and conversation history across turns to cut input tokens. Cache writes carry a 25% premium; reads cost ~10% of normal input. Turn it off only if your upstream endpoint rejects or mishandles the cache_control field.',
+        'Anthropic ephemeral prompt caching, on by default. Reuses system prompt, tools, and conversation history across turns to cut input tokens. Claude models (except through GitHub Copilot) always use it, whatever this toggle says: earlier history is kept for 1 hour and the latest turn for 5 minutes, so coming back to a long conversation does not rewrite all of it; writes cost 2x (1 hour) or 1.25x (5 minutes) normal input, reads ~10% or less. Other models, and Claude through GitHub Copilot, follow this toggle and use the 5-minute cache only (writes 1.25x, reads ~10%). Turn it off only if your upstream endpoint rejects or mishandles the cache_control field.',
       customHeaders: 'Custom headers',
       customHeadersDesc:
         'Attach extra HTTP headers to all requests sent through this provider.',

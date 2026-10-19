@@ -1,48 +1,62 @@
 import type {
-  CacheControlEphemeral,
   ContentBlockParam,
   MessageParam,
   TextBlockParam,
 } from '@anthropic-ai/sdk/resources/messages'
 
-const EPHEMERAL: CacheControlEphemeral = { type: 'ephemeral' }
+// The bundled SDK types predate `ttl`; the API accepts '5m' (default) or '1h'.
+type CacheControl = { type: 'ephemeral'; ttl?: '1h' }
+
+const EPHEMERAL: CacheControl = { type: 'ephemeral' }
+const EPHEMERAL_1H: CacheControl = { type: 'ephemeral', ttl: '1h' }
 
 function addCacheControlToSystem(
   system: unknown,
+  cacheControl: CacheControl,
 ): string | TextBlockParam[] | undefined {
   if (system === undefined || system === null) return undefined
   if (typeof system === 'string') {
     if (system.trim().length === 0) return system
-    return [{ type: 'text', text: system, cache_control: EPHEMERAL }]
+    return [
+      { type: 'text', text: system, cache_control: cacheControl },
+    ] as TextBlockParam[]
   }
   if (!Array.isArray(system) || system.length === 0) {
     return system as TextBlockParam[] | undefined
   }
   const lastIdx = system.length - 1
   return (system as TextBlockParam[]).map((block, i) =>
-    i === lastIdx ? { ...block, cache_control: EPHEMERAL } : block,
+    i === lastIdx
+      ? ({ ...block, cache_control: cacheControl } as TextBlockParam)
+      : block,
   )
 }
 
 function addCacheControlToTools(
   tools: unknown,
+  cacheControl: CacheControl,
 ): Array<Record<string, unknown>> | undefined {
   if (!Array.isArray(tools) || tools.length === 0) {
     return tools as Array<Record<string, unknown>> | undefined
   }
   const lastIdx = tools.length - 1
   return (tools as Array<Record<string, unknown>>).map((tool, i) =>
-    i === lastIdx ? { ...tool, cache_control: EPHEMERAL } : tool,
+    i === lastIdx ? { ...tool, cache_control: cacheControl } : tool,
   )
 }
 
-function addCacheControlToMessageTail(message: MessageParam): MessageParam {
+function addCacheControlToMessageTail(
+  message: MessageParam,
+  cacheControl: CacheControl,
+): MessageParam {
   const { content } = message
   if (typeof content === 'string') {
     if (content.length === 0) return message
     return {
       ...message,
-      content: [{ type: 'text', text: content, cache_control: EPHEMERAL }],
+      content: [
+        { type: 'text', text: content, cache_control: cacheControl },
+      ] as ContentBlockParam[],
     }
   }
   if (!Array.isArray(content)) return message
@@ -53,7 +67,7 @@ function addCacheControlToMessageTail(message: MessageParam): MessageParam {
   if (breakpointIdx < 0) return message
   const nextContent = content.map((block, i) => {
     if (i !== breakpointIdx) return block
-    return { ...block, cache_control: EPHEMERAL } as ContentBlockParam
+    return { ...block, cache_control: cacheControl } as ContentBlockParam
   })
   return { ...message, content: nextContent }
 }
@@ -68,29 +82,38 @@ function addCacheControlToMessageTail(message: MessageParam): MessageParam {
  *   4. Last content block of `messages[len-1]`  (rolling tail — extends cache across
  *      agent loop iterations that append assistant/tool turns)
  *
+ * With `extendedTtl`, breakpoints 1-3 use the 1-hour TTL and only the rolling
+ * tail keeps the 5-minute one. A user who comes back to a long conversation
+ * after more than 5 minutes then rewrites only the last turn instead of the
+ * whole history. The API requires 1-hour entries to precede 5-minute ones,
+ * which this order satisfies.
+ *
  * Non-mutating: returns a shallow-cloned payload with breakpoints injected.
  */
 export function applyAnthropicPromptCache<
   T extends { messages: MessageParam[] },
->(payload: T): T {
+>(payload: T, options?: { extendedTtl?: boolean }): T {
   const p = payload as T & {
     system?: unknown
     tools?: unknown
   }
-  const system = addCacheControlToSystem(p.system)
-  const tools = addCacheControlToTools(p.tools)
+  const prefixCacheControl = options?.extendedTtl ? EPHEMERAL_1H : EPHEMERAL
+  const system = addCacheControlToSystem(p.system, prefixCacheControl)
+  const tools = addCacheControlToTools(p.tools, prefixCacheControl)
 
   const messages = payload.messages
   let nextMessages: MessageParam[] = messages
   if (messages.length >= 1) {
     const lastIdx = messages.length - 1
     nextMessages = messages.map((m, i) =>
-      i === lastIdx ? addCacheControlToMessageTail(m) : m,
+      i === lastIdx ? addCacheControlToMessageTail(m, EPHEMERAL) : m,
     )
     if (messages.length >= 2) {
       const secondLastIdx = lastIdx - 1
       nextMessages = nextMessages.map((m, i) =>
-        i === secondLastIdx ? addCacheControlToMessageTail(m) : m,
+        i === secondLastIdx
+          ? addCacheControlToMessageTail(m, prefixCacheControl)
+          : m,
       )
     }
   }

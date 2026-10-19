@@ -93,6 +93,22 @@ describe('CopilotProvider', () => {
     globalThis.fetch = originalFetch
   })
 
+  it('leaves Claude caching to the toggle and off the 1-hour TTL', () => {
+    // The gateway may reject a forced `cache_control` or `ttl: '1h'`.
+    const messages = (
+      new CopilotProvider(provider) as unknown as {
+        endpointProviders: {
+          messages: {
+            lockClaudePromptCaching: boolean
+            extendedPromptCacheTtl: boolean
+          }
+        }
+      }
+    ).endpointProviders.messages
+    expect(messages.lockClaudePromptCaching).toBe(false)
+    expect(messages.extendedPromptCacheTtl).toBe(false)
+  })
+
   const send = async (
     model: ChatModel,
     overrides: Partial<LLMRequestNonStreaming> = {},

@@ -932,7 +932,7 @@ export const zh: TranslationKeys = {
       responseStreamingModeNonStreaming: '非流式',
       promptCaching: '提示缓存',
       promptCachingDesc:
-        'Anthropic 临时提示缓存，默认开启。在连续对话中复用系统提示、工具列表和历史消息，显著降低输入 token 消耗与延迟。写缓存有 25% 溢价，命中读取约为原价 10%。仅当上游服务不支持或错误处理 cache_control 字段时才需要关闭。',
+        'Anthropic 临时提示缓存，默认开启。在连续对话中复用系统提示、工具列表和历史消息，显著降低输入 token 消耗与延迟。Claude 模型（经 GitHub Copilot 的除外）始终开启，不受此开关影响：较早的历史缓存 1 小时、最新一轮缓存 5 分钟，隔一阵再回到长对话时不用整段重写；写缓存为原价的 2 倍（1 小时）或 1.25 倍（5 分钟），命中读取约为原价 10% 或更低。其他模型以及经 GitHub Copilot 的 Claude 按此开关处理，只用 5 分钟缓存（写 1.25 倍、读约 10%），仅当上游服务不支持或错误处理 cache_control 字段时才需要关闭。',
       customHeaders: '自定义请求头',
       customHeadersDesc: '为此提供商发出的所有请求附加额外的 HTTP Header。',
       customHeadersAdd: '添加请求头',

@@ -176,6 +176,8 @@ export class AnthropicProvider extends BaseLLMProvider<LLMProvider> {
   /** An `anthropic-beta` value the user set as a custom header. */
   private customBetaHeader: string | undefined
   private readonly thinkingBlockBinding: boolean
+  private readonly lockClaudePromptCaching: boolean
+  private readonly extendedPromptCacheTtl: boolean
 
   private promoteTransportMode = (mode: AutoPromotedTransportMode) => {
     if (this.requestTransportMode === mode) {
@@ -190,8 +192,26 @@ export class AnthropicProvider extends BaseLLMProvider<LLMProvider> {
     this.onAutoPromoteTransportMode?.(mode)
   }
 
-  private isPromptCachingEnabled(): boolean {
+  /**
+   * Claude models always cache, whatever the provider toggle says: without
+   * it every turn resends the whole history at the full input price. The
+   * toggle still governs non-Claude models behind Anthropic-compatible
+   * endpoints, and gateways that opt out of the lock.
+   */
+  private isPromptCachingEnabled(modelId: string): boolean {
+    if (this.lockClaudePromptCaching && isClaudeModelId(modelId)) {
+      return true
+    }
     return isPromptCachingEnabled(this.provider.additionalSettings)
+  }
+
+  /**
+   * The 1-hour TTL is only sent for Claude models: Anthropic-compatible
+   * endpoints for other models (Moonshot, DeepSeek) are not known to accept
+   * `cache_control.ttl`.
+   */
+  private useExtendedPromptCacheTtl(modelId: string): boolean {
+    return this.extendedPromptCacheTtl && isClaudeModelId(modelId)
   }
 
   private static readonly DEFAULT_MAX_TOKENS = 8192
@@ -272,11 +292,25 @@ export class AnthropicProvider extends BaseLLMProvider<LLMProvider> {
        * implement Anthropic betas, such as GitHub Copilot, turns it off.
        */
       thinkingBlockBinding?: boolean
+      /**
+       * Whether Claude models ignore the prompt-caching toggle and always
+       * send `cache_control`. Defaults to true; a gateway that may reject
+       * the field, such as GitHub Copilot, leaves it to the toggle.
+       */
+      lockClaudePromptCaching?: boolean
+      /**
+       * Whether the stable cache breakpoints use the 1-hour TTL (see
+       * `applyAnthropicPromptCache`). Defaults to true; a gateway that may
+       * not accept `cache_control.ttl`, such as GitHub Copilot, turns it off.
+       */
+      extendedPromptCacheTtl?: boolean
     },
   ) {
     super(provider)
     this.onAutoPromoteTransportMode = options?.onAutoPromoteTransportMode
     this.thinkingBlockBinding = options?.thinkingBlockBinding ?? true
+    this.lockClaudePromptCaching = options?.lockClaudePromptCaching ?? true
+    this.extendedPromptCacheTtl = options?.extendedPromptCacheTtl ?? true
     const defaultHeaders = toProviderHeadersRecord(provider.customHeaders)
     this.customBetaHeader = Object.entries(defaultHeaders ?? {}).find(
       ([name]) => name.toLowerCase() === 'anthropic-beta',
@@ -409,8 +443,10 @@ export class AnthropicProvider extends BaseLLMProvider<LLMProvider> {
       const payload = this.applyCustomModelParameters<
         MessageCreateParamsNonStreaming & Record<string, unknown>
       >(model, {
-        ...(this.isPromptCachingEnabled()
-          ? applyAnthropicPromptCache(payloadBase)
+        ...(this.isPromptCachingEnabled(request.model)
+          ? applyAnthropicPromptCache(payloadBase, {
+              extendedTtl: this.useExtendedPromptCacheTtl(request.model),
+            })
           : payloadBase),
       })
 
@@ -525,8 +561,10 @@ https://github.com/glowingjade/obsidian-smart-composer/issues/286`,
       const payload = this.applyCustomModelParameters<
         MessageCreateParamsStreaming & Record<string, unknown>
       >(model, {
-        ...(this.isPromptCachingEnabled()
-          ? applyAnthropicPromptCache(payloadBase)
+        ...(this.isPromptCachingEnabled(request.model)
+          ? applyAnthropicPromptCache(payloadBase, {
+              extendedTtl: this.useExtendedPromptCacheTtl(request.model),
+            })
           : payloadBase),
       })
 
