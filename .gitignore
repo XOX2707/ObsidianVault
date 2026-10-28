@@ -9,3 +9,12 @@
 
 # YOLO chat history (private, stays on this machine)
 YOLO/data/chats/
+epub/
+epub/*.txt
+
+# 网易云听歌记录（私人数据）
+兴趣/网易云·每日听歌/plays.jsonl
+兴趣/网易云·每日听歌/last_error.txt
+
+# 节点分享链接（私人，不进 Git）
+私人/
