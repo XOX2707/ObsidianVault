@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="500" viewBox="0 0 620 500" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#7a8699"/>
+    </marker>
+  </defs>
+
+  <text x="310" y="24" text-anchor="middle" font-size="20" font-weight="700" fill="#7a8699">sh、ch 沿 y = x 翻过去：arsh x 与 arch x</text>
+
+  <!-- 坐标轴 -->
+  <line x1="80" y1="260" x2="565" y2="260" stroke="#7a8699" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="310" y1="440" x2="310" y2="38" stroke="#7a8699" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="560" y="280" font-size="15" fill="#7a8699">x</text>
+  <text x="318" y="50" font-size="15" fill="#7a8699">y</text>
+  <text x="302" y="276" text-anchor="end" font-size="13" fill="#7a8699">O</text>
+
+  <!-- y = x -->
+  <line x1="160" y1="410" x2="520" y2="50" stroke="#7a8699" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="490" y="50" font-size="14" fill="#7a8699">y = x</text>
+
+  <!-- sh x（淡） -->
+  <polyline fill="none" stroke="#e08a3c" stroke-width="2" stroke-opacity="0.45" points="220,387.8 235,356.1 250,330.5 265,309.3 280,291.3 295,275.2 310,260 325,244.8 340,228.7 355,210.7 370,189.5 385,163.9 400,132.2"/>
+  <text x="404" y="128" font-size="13" fill="#e08a3c" fill-opacity="0.8">sh x</text>
+
+  <!-- arsh x -->
+  <polyline fill="none" stroke="#e08a3c" stroke-width="3.5" points="92.4,380 142.6,365 182.2,350 213.9,335 239.5,320 260.7,305 278.7,290 294.8,275 310,260 325.2,245 341.3,230 359.3,215 380.5,200 406.1,185 437.8,170 477.4,155 527.6,140"/>
+  <text x="500" y="130" font-size="15" font-weight="700" fill="#e08a3c">arsh x</text>
+
+  <!-- ch x：左半（砍掉，很淡） -->
+  <polyline fill="none" stroke="#5b8def" stroke-width="2" stroke-opacity="0.2" stroke-dasharray="4 4" points="310,200 295,198.1 280,192.3 265,182.3 250,167.4 235,146.7 220,118.9 205,82.1"/>
+  <text x="150" y="95" font-size="12" fill="#5b8def" fill-opacity="0.6">左半被砍掉</text>
+
+  <!-- ch x：右半（保留，淡） -->
+  <polyline fill="none" stroke="#5b8def" stroke-width="2" stroke-opacity="0.45" points="310,200 325,198.1 340,192.3 355,182.3 370,167.4 385,146.7 400,118.9 415,82.1"/>
+  <text x="420" y="80" font-size="13" fill="#5b8def" fill-opacity="0.8">ch x（x ≥ 0）</text>
+
+  <!-- arch x -->
+  <polyline fill="none" stroke="#5b8def" stroke-width="3.5" points="370,260 371.9,245 377.7,230 387.7,215 402.6,200 423.3,185 451.1,170 487.9,155 535.7,140"/>
+  <text x="470" y="200" font-size="15" font-weight="700" fill="#5b8def">arch x</text>
+
+  <!-- 对称点 -->
+  <line x1="310" y1="200" x2="370" y2="260" stroke="#3f9b6b" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="310" cy="200" r="4.5" fill="#5b8def"/>
+  <circle cx="370" cy="260" r="4.5" fill="#5b8def"/>
+  <text x="262" y="205" font-size="12" fill="#5b8def">(0, 1)</text>
+  <text x="372" y="278" font-size="12" fill="#5b8def">(1, 0)</text>
+
+  <text x="310" y="470" text-anchor="middle" font-size="14" fill="#7a8699">arsh x = ln(x + √(x² + 1))：定义域 ℝ，奇函数，递增</text>
+  <text x="310" y="491" text-anchor="middle" font-size="14" fill="#7a8699">arch x = ln(x + √(x² − 1))：只翻 ch 的右半，定义域 [1, +∞)，值域 [0, +∞)</text>
+</svg>

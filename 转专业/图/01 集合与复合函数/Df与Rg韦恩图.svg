@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <clipPath id="rgClip">
+      <circle cx="175" cy="190" r="100"/>
+    </clipPath>
+  </defs>
+
+  <!-- 面板一：能复合 -->
+  <text x="235" y="45" text-anchor="middle" font-size="22" font-weight="700" fill="#3f9b6b">能复合：D<tspan baseline-shift="sub" font-size="14">f</tspan> ∩ R<tspan baseline-shift="sub" font-size="14">g</tspan> ≠ ∅</text>
+  <circle cx="175" cy="190" r="100" fill="#e05a5a" fill-opacity="0.10" stroke="#e05a5a" stroke-width="2.5"/>
+  <circle cx="295" cy="190" r="100" fill="#5b8def" fill-opacity="0.10" stroke="#5b8def" stroke-width="2.5"/>
+  <circle cx="295" cy="190" r="100" fill="#3f9b6b" fill-opacity="0.45" clip-path="url(#rgClip)"/>
+  <text x="125" y="185" text-anchor="middle" font-size="20" font-weight="700" fill="#e05a5a">R<tspan baseline-shift="sub" font-size="13">g</tspan></text>
+  <text x="125" y="208" text-anchor="middle" font-size="13" fill="#e05a5a">g 吐出来的</text>
+  <text x="345" y="185" text-anchor="middle" font-size="20" font-weight="700" fill="#5b8def">D<tspan baseline-shift="sub" font-size="13">f</tspan></text>
+  <text x="345" y="208" text-anchor="middle" font-size="13" fill="#5b8def">f 吃得下的</text>
+  <text x="235" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#2c6e4b">接得住</text>
+  <text x="235" y="204" text-anchor="middle" font-size="13" font-weight="700" fill="#2c6e4b">的部分</text>
+  <text x="235" y="330" text-anchor="middle" font-size="15" fill="#7a8699">只要中间这块非空，f(g(x)) 就搭得起来</text>
+  <text x="235" y="356" text-anchor="middle" font-size="14" fill="#7a8699">例：√(−x²)，R<tspan baseline-shift="sub" font-size="10">g</tspan> = (−∞, 0]，D<tspan baseline-shift="sub" font-size="10">f</tspan> = [0, +∞)，交集 {0}</text>
+
+  <!-- 面板二：不能复合 -->
+  <text x="720" y="45" text-anchor="middle" font-size="22" font-weight="700" fill="#e05a5a">不能复合：D<tspan baseline-shift="sub" font-size="14">f</tspan> ∩ R<tspan baseline-shift="sub" font-size="14">g</tspan> = ∅</text>
+  <circle cx="610" cy="190" r="85" fill="#e05a5a" fill-opacity="0.10" stroke="#e05a5a" stroke-width="2.5"/>
+  <circle cx="830" cy="190" r="85" fill="#5b8def" fill-opacity="0.10" stroke="#5b8def" stroke-width="2.5"/>
+  <text x="610" y="180" text-anchor="middle" font-size="20" font-weight="700" fill="#e05a5a">R<tspan baseline-shift="sub" font-size="13">g</tspan></text>
+  <text x="610" y="205" text-anchor="middle" font-size="15" fill="#e05a5a">[−2, 0]</text>
+  <text x="830" y="180" text-anchor="middle" font-size="20" font-weight="700" fill="#5b8def">D<tspan baseline-shift="sub" font-size="13">f</tspan></text>
+  <text x="830" y="205" text-anchor="middle" font-size="15" fill="#5b8def">(0, +∞)</text>
+  <line x1="698" y1="190" x2="742" y2="190" stroke="#7a8699" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="720" y="180" text-anchor="middle" font-size="24" font-weight="700" fill="#e05a5a">✕</text>
+  <text x="720" y="330" text-anchor="middle" font-size="15" fill="#7a8699">g 吐出来的数 f 一个都吃不下</text>
+  <text x="720" y="356" text-anchor="middle" font-size="14" fill="#7a8699">例：ln(sin x − 1)，对任何 x 都没有意义</text>
+</svg>

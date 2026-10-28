@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="490" viewBox="0 0 620 490" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#7a8699"/>
+    </marker>
+  </defs>
+
+  <text x="310" y="24" text-anchor="middle" font-size="20" font-weight="700" fill="#7a8699">sh x 与 ch x：e^x 拆出来的奇偶两半</text>
+
+  <!-- 坐标轴 -->
+  <line x1="100" y1="240" x2="525" y2="240" stroke="#7a8699" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="310" y1="445" x2="310" y2="35" stroke="#7a8699" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="520" y="260" font-size="15" fill="#7a8699">x</text>
+  <text x="318" y="46" font-size="15" fill="#7a8699">y</text>
+  <text x="302" y="256" text-anchor="end" font-size="13" fill="#7a8699">O</text>
+  <line x1="304" y1="190" x2="316" y2="190" stroke="#7a8699" stroke-width="1.5"/>
+  <text x="300" y="186" text-anchor="end" font-size="12" fill="#7a8699">1</text>
+
+  <!-- 辅助：e^x / 2 与 e^-x / 2 -->
+  <polyline fill="none" stroke="#7a8699" stroke-width="1.5" stroke-dasharray="5 4" points="130,236.6 175,234.4 220,230.8 265,224.8 310,215 355,198.8 400,172 445,128 467.5,96.2 490,55.3"/>
+  <polyline fill="none" stroke="#7a8699" stroke-width="1.5" stroke-dasharray="5 4" points="490,236.6 445,234.4 400,230.8 355,224.8 310,215 265,198.8 220,172 175,128 152.5,96.2 130,55.3"/>
+  <text x="498" y="70" font-size="12" fill="#7a8699">eˣ/2</text>
+  <text x="78" y="70" font-size="12" fill="#7a8699">e⁻ˣ/2</text>
+
+  <!-- ch x -->
+  <polyline fill="none" stroke="#5b8def" stroke-width="3.5" points="130,51.9 152.5,91.8 175,122.4 197.5,145.6 220,162.8 242.5,175.3 265,183.6 287.5,188.4 310,190 332.5,188.4 355,183.6 377.5,175.3 400,162.8 422.5,145.6 445,122.4 467.5,91.8 490,51.9"/>
+  <text x="180" y="150" font-size="16" font-weight="700" fill="#5b8def">ch x</text>
+
+  <!-- sh x -->
+  <polyline fill="none" stroke="#e08a3c" stroke-width="3.5" points="130,421.3 152.5,379.5 175,346.5 197.5,320.1 220,298.8 242.5,281.1 265,266.1 287.5,252.6 310,240 332.5,227.4 355,213.9 377.5,198.9 400,181.2 422.5,159.9 445,133.5 467.5,100.5 490,58.7"/>
+  <text x="450" y="160" font-size="16" font-weight="700" fill="#e08a3c">sh x</text>
+
+  <!-- 关键点 -->
+  <circle cx="310" cy="190" r="4.5" fill="#5b8def"/>
+  <text x="318" y="182" font-size="12" fill="#5b8def">(0, 1)</text>
+  <circle cx="310" cy="240" r="4.5" fill="#e08a3c"/>
+  <circle cx="310" cy="215" r="3.5" fill="#7a8699"/>
+  <text x="318" y="221" font-size="11" fill="#7a8699">(0, ½)</text>
+
+  <text x="310" y="465" text-anchor="middle" font-size="14" fill="#7a8699">ch x 偶函数、最低点 (0, 1)、像下垂的链子；sh x 奇函数、过原点、一路递增</text>
+  <text x="310" y="484" text-anchor="middle" font-size="13" fill="#7a8699">虚线两条相加得 ch x，相减（eˣ/2 − e⁻ˣ/2）得 sh x</text>
+</svg>
