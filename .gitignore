@@ -7,6 +7,13 @@
 .obsidian/plugins/yolo-xox/
 .obsidian/plugins/yolo/
 
+# Obsidian per-machine config (theme, enabled plugins, workspace).
+# Plugin source stays tracked: .obsidian/plugins/obsidian-yolo/
+.obsidian/*
+!.obsidian/plugins/
+.obsidian/plugins/*
+!.obsidian/plugins/obsidian-yolo/
+
 # YOLO chat history (private, stays on this machine)
 YOLO/data/chats/
 epub/

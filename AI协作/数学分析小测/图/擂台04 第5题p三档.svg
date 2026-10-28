@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="175" viewBox="0 0 640 175">
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;fill:#333}.t{font-size:15px;font-weight:bold}.s{font-size:11px;fill:#666}</style>
+<rect width="640" height="175" fill="#fff"/>
+<text x="20" y="25" class="t">第 5 题答案：按 p 分三档</text>
+<line x1="60" y1="80" x2="180" y2="80" stroke="#d9534f" stroke-width="8"/>
+<line x1="180" y1="80" x2="300" y2="80" stroke="#f0a030" stroke-width="8"/>
+<line x1="300" y1="80" x2="582" y2="80" stroke="#2e8b57" stroke-width="8"/>
+<polygon points="582,72 598,80 582,88" fill="#2e8b57"/>
+<circle cx="60" cy="80" r="6" fill="#fff" stroke="#d9534f" stroke-width="2"/>
+<circle cx="180" cy="80" r="6" fill="#d9534f"/>
+<circle cx="300" cy="80" r="6" fill="#f0a030"/>
+<g text-anchor="middle">
+<text x="60" y="60">0</text><text x="180" y="60">1/2</text><text x="300" y="60">1</text><text x="540" y="60">2</text>
+<text x="120" y="110" fill="#d9534f" font-weight="bold">发散</text>
+<text x="240" y="110" fill="#f0a030" font-weight="bold">条件收敛</text>
+<text x="440" y="110" fill="#2e8b57" font-weight="bold">绝对收敛</text>
+<text x="120" y="128" class="s">面积冲到负无穷</text>
+<text x="240" y="128" class="s">正负抵消才收敛</text>
+<text x="440" y="128" class="s">加不加绝对值都收敛</text>
+</g>
+<text x="20" y="160" class="s">端点：p = 1/2 算发散（实心红点），p = 1 算条件收敛（实心橙点）；常见错是以为分界在 1，或者以为 p &gt; 0 都收敛</text>
+</svg>

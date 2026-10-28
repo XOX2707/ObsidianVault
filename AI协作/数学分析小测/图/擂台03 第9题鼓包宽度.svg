@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="250" viewBox="0 0 900 250">
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;fill:#333}.t{font-size:15px;font-weight:bold}.bad{fill:#d9534f}.ok{fill:#2e8b57}</style>
+<rect width="900" height="250" fill="#fff"/>
+<g transform="translate(10,0)">
+<rect x="0" y="40" width="280" height="200" rx="8" fill="#fafafa" stroke="#ddd"/>
+<text x="140" y="28" text-anchor="middle" class="t">宽 ℓ（太宽）</text>
+<line x1="20" y1="180" x2="260" y2="180" stroke="#888"/>
+<path d="M30,180 Q140,40 250,180" fill="#f0a030" fill-opacity="0.4" stroke="#f0a030" stroke-width="2"/>
+<text x="140" y="205" text-anchor="middle">坡度 ≈ ℓ → 0</text>
+<text x="140" y="225" text-anchor="middle" class="bad">越来越平，导数变乖，能积分了 ✗</text>
+</g>
+<g transform="translate(310,0)">
+<rect x="0" y="40" width="280" height="200" rx="8" fill="#fafafa" stroke="#ddd"/>
+<text x="140" y="28" text-anchor="middle" class="t">宽 ℓ²（刚好）</text>
+<line x1="20" y1="180" x2="260" y2="180" stroke="#888"/>
+<path d="M105,180 Q140,40 175,180" fill="#f0a030" fill-opacity="0.4" stroke="#f0a030" stroke-width="2"/>
+<text x="140" y="205" text-anchor="middle">坡度 ≈ 1，不变小也不爆</text>
+<text x="140" y="225" text-anchor="middle" class="ok">正合适 ✓</text>
+</g>
+<g transform="translate(610,0)">
+<rect x="0" y="40" width="280" height="200" rx="8" fill="#fafafa" stroke="#ddd"/>
+<text x="140" y="28" text-anchor="middle" class="t">宽 ℓ³（太窄）</text>
+<line x1="20" y1="180" x2="260" y2="180" stroke="#888"/>
+<path d="M132,180 Q140,40 148,180" fill="#f0a030" fill-opacity="0.4" stroke="#f0a030" stroke-width="2"/>
+<text x="140" y="205" text-anchor="middle">坡度 ≈ 1/ℓ → ∞</text>
+<text x="140" y="225" text-anchor="middle" class="bad">导数无界，违反题目条件 ✗</text>
+</g>
+</svg>

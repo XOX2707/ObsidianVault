@@ -1,0 +1,107 @@
+# 今日待验收 · 第二批 · 2026-10-28
+
+已 git add，未 commit。Source Control → Staged 验收。OK 回「提交」或自己 Commit。
+
+## 本批
+- 库规矩/说明改动（AGENTS CLAUDE README 等）+ .gitignore
+- AI协作积压（断连同步、VPS任务书、数学分析小测等）
+- 想法/ 全文、线性代数/、历史日记 md、账单/
+- 仪表盘若干补页、若干根目录说明 md
+
+## 仍不进
+- AI对话/、启航资源/、YOLO/、deepseek_data、usage_data、个人信息、CLAUDE.local、Economic Study、学校/兴趣/游戏/设备、节点教程套娃 _backup、ics 日历导出
+
+## 暂存清单（93）
+- .gitignore
+- AGENTS.md
+- AI Agent 交互行为差异总结：Obsidian Agent vs Claude.md
+- AI助手回复.md
+- AI协作/Claude 停摆残留 Routine 重排（2026-10-27）.md
+- AI协作/Cursor 模型选择参考.md
+- AI协作/issue-deepseek-cli 自动压缩过早.md
+- AI协作/任务书·VPS 开节点（交 Cursor）.md
+- AI协作/数学分析小测/作答·总结·致出题者（Flash1017）.md
+- AI协作/数学分析小测/反擂台·作答（Flash1017）.md
+- AI协作/数学分析小测/反擂台·作答（Flash1017）·盲测版.md
+- AI协作/数学分析小测/反擂台·答案.md
+- AI协作/数学分析小测/回信·擂台（寻寻）.md
+- AI协作/数学分析小测/图/擂台01 主卷得分.svg
+- AI协作/数学分析小测/图/擂台02 第9题三版鼓包.svg
+- AI协作/数学分析小测/图/擂台03 第9题鼓包宽度.svg
+- AI协作/数学分析小测/图/擂台04 第5题p三档.svg
+- AI协作/数学分析小测/图/擂台05 第5题上下界.svg
+- AI协作/数学分析小测/图/擂台06 第8题跳步链条.svg
+- AI协作/数学分析小测/图/擂台07 第8题反例曲线.svg
+- AI协作/数学分析小测/图/擂台08 反擂台A部分和.svg
+- AI协作/数学分析小测/擂台通俗版·五处较劲.md
+- AI协作/数学分析小测/答案与评分.md
+- AI协作/数学分析小测/题目.md
+- AI协作/给 Claude 的断连期同步（2026-10-22 至 10-27）.md
+- AI协作/网课省时规划（交 Claude）.md
+- CLAUDE.md
+- Claude API 计费与 Opus 5.5 High 用法.md
+- DEEPSEEK.md
+- LICENSE
+- Obsidian 查看改动历史功能.md
+- README.md
+- scripts/grok-review.ps1
+- 仪表盘/手机端求生地图.md
+- 仪表盘/文件清单（按时间·静态）.md
+- 仪表盘/最近对话.md
+- 仪表盘/麦金卡回本计划.md
+- 使用说明.md
+- 多设备与 Obsidian Sync.md
+- 想法/Claude 决策（Grok 复核 2026-10-28）.md
+- 想法/Linux（Ubuntu）开发规划.md
+- 想法/VPS 节点收尾清单.md
+- 想法/YOLO 里挂 Cursor 模型（设想）.md
+- 想法/token 像比特币·计费的虚与实.md
+- 想法/一条龙接 Claude 总清单.md
+- 想法/一次线索误判的复盘：从《美丽新世界》到《娱乐至死》.md
+- 想法/三个三的焊接·三条蛇与三日间.md
+- 想法/个人变现矩阵搭建规划（微信·小红书·闲鱼·淘宝）.md
+- 想法/值得深入研究的话题清单.md
+- 想法/别攻略，慢慢靠近.md
+- 想法/图/想进建院辩论赛决赛.pdf
+- 想法/想进建院辩论赛决赛.md
+- 想法/我的优势画像.md
+- 想法/把Vault做成简历·找资助解决AI费用.md
+- 想法/改编片段·楠木与魏成的对照.md
+- 想法/无用之用·高考作文里的文学母题.md
+- 想法/现实与虚拟的映射.md
+- 想法/美国 VPS 搭 Claude 代理（配置步骤）.md
+- 想法/草稿·三日间的幸福.md
+- 想法/被欺负还是躲过一劫·100U 事件的翻篇.md
+- 想法/路线一 思想实验：¥200 能走到哪.md
+- 想法/路线一 美国自洽接 Claude（主方案 + Schedule）.md
+- 想法/轻小说·三日间.md
+- 想法/辩论赛·四辩位逻辑链与问题链.svg
+- 想法/辩论赛·四辩位逻辑链与问题链.yoloboard
+- 想法/运气还是实力.md
+- 想法/马斯克会把 Grok 拆成「聊天 + 编程」双轨吗.md
+- 想法/高德地图导航的原理.md
+- 新手README·搭一个AI知识库.md
+- 日记/2026-10-12.md
+- 日记/2026-10-15.md
+- 日记/2026-10-18.md
+- 日记/2026-10-19.md
+- 日记/2026-10-20.md
+- 日记/2026-10-21.md
+- 日记/2026-10-22.md
+- 日记/2026-10-23.md
+- 日记/2026-10-25.md
+- 日记/2026-10-27.md
+- 本地助手 vs Obsidian Agent 分工.md
+- 线性代数/00 课程地图.md
+- 线性代数/01 向量是什么.md
+- 线性代数/参考资料/Hefferon Linear Algebra 4th ed.pdf
+- 线性代数/参考资料/Hefferon Linear Algebra 习题答案.pdf
+- 线性代数/图/01 向量加法.svg
+- 账单/2026-10-20 Claude Console API 一天.md
+- 账单/2026-10-20 DeepSeek 开放平台 一周.md
+- 账单/2026-10-20 claude.ai usage credits.md
+- 账单/2026-10-20 麦金卡.md
+- 账单/2026-10-21 DeepSeek 开放平台 10.15-10.21.md
+- 账单/2026-10-27 DeepSeek 开放平台 10.21-10.27.md
+- 账单/记账规则.md
+- 项目进度与待办.md

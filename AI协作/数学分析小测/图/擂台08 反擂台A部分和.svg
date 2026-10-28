@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="370" viewBox="0 0 640 370">
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;fill:#333}.t{font-size:15px;font-weight:bold}.s{font-size:11px;fill:#666}</style>
+<rect width="640" height="370" fill="#fff"/>
+<text x="20" y="26" class="t">反擂台 A：答案是 1 − 1/4 + 1/9 − 1/16 + … 一直加到无穷</text>
+<line x1="60" y1="50" x2="60" y2="310" stroke="#333"/>
+<line x1="60" y1="310" x2="500" y2="310" stroke="#333"/>
+<g stroke="#eee"><line x1="61" y1="60" x2="500" y2="60"/><line x1="61" y1="140" x2="500" y2="140"/><line x1="61" y1="220" x2="500" y2="220"/><line x1="61" y1="300" x2="500" y2="300"/></g>
+<g text-anchor="end"><text x="52" y="64" class="s">1.0</text><text x="52" y="144" class="s">0.9</text><text x="52" y="224" class="s">0.8</text><text x="52" y="304" class="s">0.7</text></g>
+<line x1="60" y1="260" x2="500" y2="260" stroke="#d9534f" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="60" y1="202" x2="500" y2="202" stroke="#2e8b57" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="506" y="206" fill="#2e8b57" font-weight="bold">π²/12 ≈ 0.8225 ✓</text>
+<text x="506" y="264" fill="#d9534f" font-weight="bold">3/4 = 0.75 ✗</text>
+<polyline fill="none" stroke="#4a90d9" stroke-width="2" points="80,60 125,260 170,171.1 215,221.1 260,189.1 305,211.3 350,195 395,207.5 440,197.6 485,205.6"/>
+<g fill="#4a90d9"><circle cx="80" cy="60" r="4"/><circle cx="170" cy="171.1" r="4"/><circle cx="215" cy="221.1" r="4"/><circle cx="260" cy="189.1" r="4"/><circle cx="305" cy="211.3" r="4"/><circle cx="350" cy="195" r="4"/><circle cx="395" cy="207.5" r="4"/><circle cx="440" cy="197.6" r="4"/><circle cx="485" cy="205.6" r="4"/></g>
+<circle cx="125" cy="260" r="7" fill="#d9534f"/>
+<text x="135" y="290" fill="#d9534f">只加到第 2 项就停手 → 误答 3/4</text>
+<g text-anchor="middle" class="s"><text x="80" y="326" class="s">1</text><text x="125" y="326" class="s">2</text><text x="170" y="326" class="s">3</text><text x="215" y="326" class="s">4</text><text x="260" y="326" class="s">5</text><text x="305" y="326" class="s">6</text><text x="350" y="326" class="s">7</text><text x="395" y="326" class="s">8</text><text x="440" y="326" class="s">9</text><text x="485" y="326" class="s">10</text></g>
+<text x="280" y="346" text-anchor="middle">加到第几项</text>
+<text x="20" y="364" class="s">蓝线上下摆动、越摆越小，最后停在绿线；后面每一项都很小，但不能丢</text>
+</svg>

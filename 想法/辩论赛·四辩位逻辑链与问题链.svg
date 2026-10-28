@@ -1,0 +1,247 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1640" height="1320" viewBox="0 0 1640 1320" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a7f88"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d9485f"/>
+    </marker>
+    <filter id="sh" x="-5%" y="-5%" width="110%" height="125%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .title { font-size: 24px; font-weight: 800; fill: #222; }
+      .sub { font-size: 13px; fill: #888; }
+      .gl { font-size: 15px; font-weight: 700; }
+      .h { font-size: 17px; font-weight: 700; fill: #2b2b2b; }
+      .t { font-size: 14px; font-weight: 700; fill: #2b2b2b; }
+      .b { font-size: 13px; fill: #444; }
+      .em { fill: #c23a50; font-weight: 700; }
+      .el { font-size: 11.5px; fill: #666; }
+      .elR { font-size: 11.5px; fill: #c23a50; font-weight: 700; }
+      .card { fill: #fff; stroke: #e2ded6; stroke-width: 1; }
+      .edge { fill: none; stroke: #7a7f88; stroke-width: 1.5; }
+      .edgeR { fill: none; stroke: #d9485f; stroke-width: 2; }
+      .pill { fill: #fff; stroke: #ddd; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1640" height="1320" fill="#faf8f4"/>
+
+  <!-- 标题 -->
+  <text x="30" y="50" class="title">辩论赛 · 四辩位逻辑链与问题链</text>
+
+  <!-- ================= 我方共用的一套 ================= -->
+  <rect x="30" y="76" width="1540" height="200" rx="14" fill="#eef3fb" stroke="#a9bfe3" stroke-width="1.5"/>
+  <text x="50" y="104" class="gl" fill="#3b5b92">我方共用的一套（四人别各说各的）</text>
+
+  <!-- C1 整套逻辑链 -->
+  <rect x="50" y="120" width="255" height="120" rx="10" class="card" filter="url(#sh)"/>
+  <text x="64" y="148" class="t">我方整套逻辑链（四人共用一套）</text>
+  <text x="64" y="174" class="b">一句话立场：争的不是平凡好不好，</text>
+  <text x="64" y="195" class="b">是「只是」那声「我本可以」</text>
+  <text x="64" y="216" class="b">该不该被承认</text>
+
+  <!-- C2 定义 -->
+  <rect x="361" y="120" width="255" height="120" rx="10" class="card" filter="url(#sh)"/>
+  <text x="375" y="148" class="t">定义（一辩前 40 秒钉住）</text>
+  <text x="375" y="174" class="b">• 凡人＝没成为曾想成为的那种人</text>
+  <text x="375" y="195" class="b">• 遗憾＝对「我本可以」的惋惜</text>
+  <text x="375" y="216" class="b">• 该＝应被承认，不是一道命令</text>
+
+  <!-- C3 判准 -->
+  <rect x="672" y="120" width="255" height="120" rx="10" class="card" filter="url(#sh)"/>
+  <text x="686" y="148" class="t">判准（抛给评委）</text>
+  <text x="686" y="174" class="b">真实对应事实</text>
+  <text x="686" y="195" class="b">+ 指向有价值</text>
+  <text x="686" y="216" class="b">+ 尊重当事人</text>
+
+  <!-- C4 论点一 -->
+  <rect x="983" y="120" width="255" height="120" rx="10" class="card" filter="url(#sh)"/>
+  <text x="997" y="148" class="t">论点一</text>
+  <text x="997" y="174" class="b">遗憾是对落差的诚实，</text>
+  <text x="997" y="195" class="b">劝人不遗憾＝要他对自己说谎</text>
+
+  <!-- C5 论点二（主攻） -->
+  <rect x="1294" y="120" width="255" height="120" rx="10" fill="#fff" stroke="#d9485f" stroke-width="2" filter="url(#sh)"/>
+  <text x="1308" y="148" class="t">论点二（主攻 · 圆满战场）</text>
+  <text x="1308" y="174" class="b">没遗憾只有两种可能：</text>
+  <text x="1308" y="195" class="b">实现了 / 从没张望过。</text>
+  <text x="1308" y="216" class="b">题面排除前者，只剩<tspan class="em">「麻木」</tspan></text>
+
+  <!-- 顶部连线 -->
+  <line x1="305" y1="184" x2="361" y2="184" class="edge" marker-end="url(#arr)"/>
+  <text x="333" y="174" class="el" text-anchor="middle">先钉定义</text>
+  <line x1="616" y1="184" x2="672" y2="184" class="edge" marker-end="url(#arr)"/>
+  <text x="644" y="174" class="el" text-anchor="middle">给判准</text>
+  <line x1="927" y1="184" x2="983" y2="184" class="edge" marker-end="url(#arr)"/>
+  <text x="955" y="174" class="el" text-anchor="middle">论点一</text>
+  <path d="M 800 240 V 257 H 1350 V 240" class="edge" marker-end="url(#arr)"/>
+  <rect x="1090" y="249" width="40" height="17" rx="8" class="pill"/>
+  <text x="1110" y="261.5" class="el" text-anchor="middle">论点二</text>
+
+  <!-- ================= 一辩 ================= -->
+  <rect x="30" y="300" width="358" height="502" rx="14" fill="#eef7ee" stroke="#a8d0a8" stroke-width="1.5"/>
+  <text x="48" y="328" class="gl" fill="#3d7a44">一辩</text>
+
+  <rect x="48" y="344" width="322" height="74" rx="10" fill="#d9eed9" stroke="#a8d0a8" filter="url(#sh)"/>
+  <text x="62" y="374" class="h">一辩</text>
+  <text x="62" y="398" class="b">陈词 3:00 → 被对方四辩盘问 1:30</text>
+
+  <line x1="209" y1="418" x2="209" y2="454" class="edge" marker-end="url(#arr)"/>
+  <text x="217" y="440" class="el">陈词</text>
+
+  <rect x="48" y="454" width="322" height="176" rx="10" class="card" filter="url(#sh)"/>
+  <text x="62" y="482" class="t">逻辑链（照稿背，约 850 字）</text>
+  <text x="62" y="508" class="b">抢题眼「只是」</text>
+  <text x="62" y="529" class="b">→ 切定义（遗憾≠否定）</text>
+  <text x="62" y="550" class="b">→ 判准</text>
+  <text x="62" y="571" class="b">→ 论点一（复读生例子）</text>
+  <text x="62" y="592" class="b">→ 论点二（两难）</text>
+  <text x="62" y="613" class="b">→ 收金句<tspan class="em">「本来可以更长一点」</tspan></text>
+
+  <line x1="209" y1="630" x2="209" y2="666" class="edge" marker-end="url(#arr)"/>
+  <text x="217" y="652" class="el">被盘问</text>
+
+  <rect x="48" y="666" width="322" height="116" rx="10" class="card" filter="url(#sh)"/>
+  <text x="62" y="694" class="t">被盘问（守定义，短答不反问）</text>
+  <text x="62" y="720" class="b">• 遗憾＝惋惜，不是痛苦/否定一生</text>
+  <text x="62" y="741" class="b">• 说的是「只是」不好，不是平凡不好</text>
+  <text x="62" y="762" class="b">• 要的是承认，不是加罚</text>
+
+  <!-- ================= 二辩 ================= -->
+  <rect x="424" y="300" width="358" height="314" rx="14" fill="#fff5e3" stroke="#e7c98a" stroke-width="1.5"/>
+  <text x="442" y="328" class="gl" fill="#96681a">二辩</text>
+
+  <rect x="442" y="344" width="322" height="74" rx="10" fill="#fbe6bb" stroke="#e7c98a" filter="url(#sh)"/>
+  <text x="456" y="374" class="h">二辩</text>
+  <text x="456" y="398" class="b">申论 2:00 → 对辩 1:30</text>
+
+  <line x1="603" y1="418" x2="603" y2="454" class="edge" marker-end="url(#arr)"/>
+  <text x="611" y="440" class="el">申论</text>
+
+  <rect x="442" y="454" width="322" height="140" rx="10" class="card" filter="url(#sh)"/>
+  <text x="456" y="482" class="t">逻辑链（一半准备一半临场）</text>
+  <text x="456" y="508" class="b">接对方一辩立论去拆</text>
+  <text x="456" y="529" class="b">→ 守住我方三个定义（被问急也不改口）</text>
+  <text x="456" y="550" class="b">→ 对辩点出「从没向往过」的漏洞，</text>
+  <text x="472" y="571" class="b">喊暗号<tspan class="em">「两难」</tspan></text>
+
+  <!-- ================= 三辩（我） ================= -->
+  <rect x="818" y="300" width="358" height="974" rx="14" fill="#fdeef0" stroke="#e8a3ad" stroke-width="2"/>
+  <text x="836" y="328" class="gl" fill="#b23a4c">三辩（我）· 盘问逼死角</text>
+
+  <rect x="836" y="344" width="322" height="74" rx="10" fill="#f8d3d9" stroke="#e8a3ad" filter="url(#sh)"/>
+  <text x="850" y="374" class="h">三辩（我）</text>
+  <text x="850" y="398" class="b">盘问 2:30 → 小结 1:30</text>
+
+  <line x1="997" y1="418" x2="997" y2="454" class="edge" marker-end="url(#arr)"/>
+  <text x="1005" y="440" class="el">第一问</text>
+
+  <rect x="836" y="454" width="322" height="180" rx="10" class="card" filter="url(#sh)"/>
+  <text x="850" y="482" class="t">问题链①：一个人怎么才能一生完全没遗憾？</text>
+  <text x="850" y="508" class="b">• 答「活成想成为的样子」</text>
+  <text x="866" y="529" class="b">→ 那凡人活成了吗？没有</text>
+  <text x="850" y="550" class="b">• 答「知足/看开」</text>
+  <text x="866" y="571" class="b">→ 要知足得先有「想要却得不到」的</text>
+  <text x="850" y="592" class="b">• 答「降低期待」</text>
+  <text x="866" y="613" class="b">→ 降下来＝已承认原先够不着</text>
+
+  <line x1="997" y1="634" x2="997" y2="670" class="edge" marker-end="url(#arr)"/>
+  <text x="1005" y="656" class="el">第二问</text>
+
+  <rect x="836" y="670" width="322" height="100" rx="10" class="card" filter="url(#sh)"/>
+  <text x="850" y="698" class="t">问题链②：想要过、得不到、再放下，</text>
+  <text x="850" y="718" class="t">中间那一步叫什么？</text>
+  <text x="850" y="744" class="b">→ 逼出<tspan class="em">「遗憾」</tspan></text>
+
+  <line x1="997" y1="770" x2="997" y2="806" class="edgeR" marker-end="url(#arrR)"/>
+  <text x="1005" y="792" class="elR">杀招</text>
+
+  <rect x="836" y="806" width="322" height="140" rx="10" fill="#fff" stroke="#d9485f" stroke-width="2" filter="url(#sh)"/>
+  <text x="850" y="834" class="t">问题链③（杀招）</text>
+  <text x="850" y="860" class="b">所以「不遗憾」＝遗憾之后放下，</text>
+  <text x="850" y="881" class="b">不是从没有过。</text>
+  <text x="850" y="902" class="b">既然遗憾真实存在过，凭什么说它<tspan class="em">「不该」</tspan>？</text>
+  <text x="850" y="923" class="b">（放下 ≠ 不该）</text>
+
+  <line x1="997" y1="946" x2="997" y2="982" class="edge" marker-end="url(#arr)"/>
+  <text x="1005" y="968" class="el">小结收口</text>
+
+  <rect x="836" y="982" width="322" height="96" rx="10" class="card" filter="url(#sh)"/>
+  <text x="850" y="1010" class="t">小结模板（1:30）</text>
+  <text x="850" y="1036" class="b">对方认了什么 → 等于承认什么</text>
+  <text x="850" y="1057" class="b">→ 我方成立 → 请评委记住这一句</text>
+
+  <rect x="836" y="1114" width="322" height="140" rx="10" fill="#fff" stroke="#c9a3aa" stroke-width="1.2" stroke-dasharray="6 4" filter="url(#sh)"/>
+  <text x="850" y="1142" class="t">补刀 / 备用</text>
+  <text x="850" y="1168" class="b">• 绕「遗憾＝痛苦」：复读生照常过日子，</text>
+  <text x="866" y="1189" class="b">是遗憾还是痛苦？人生被否定了吗？</text>
+  <text x="850" y="1210" class="b">• 临终无用：争的是「该被承认」，</text>
+  <text x="866" y="1231" class="b">不是拿它换改变</text>
+
+  <!-- 补刀：问题链① → 补刀（走左侧通道） -->
+  <path d="M 836 544 H 800 V 1184 H 836" class="edge" stroke-dasharray="6 4" marker-end="url(#arr)"/>
+  <rect x="786" y="892" width="28" height="17" rx="8" class="pill"/>
+  <text x="800" y="904.5" class="el" text-anchor="middle">补刀</text>
+
+  <!-- ================= 四辩 ================= -->
+  <rect x="1212" y="300" width="358" height="594" rx="14" fill="#f2eefb" stroke="#bfaee6" stroke-width="1.5"/>
+  <text x="1230" y="328" class="gl" fill="#5b46a0">四辩 · 破定义＋收全场</text>
+
+  <rect x="1230" y="344" width="322" height="74" rx="10" fill="#e2d9f7" stroke="#bfaee6" filter="url(#sh)"/>
+  <text x="1244" y="374" class="h">四辩</text>
+  <text x="1244" y="398" class="b">开场盘问 1:30 → 结辩 3:30</text>
+
+  <line x1="1391" y1="418" x2="1391" y2="454" class="edge" marker-end="url(#arr)"/>
+  <text x="1399" y="440" class="el">开场盘问</text>
+
+  <rect x="1230" y="454" width="322" height="160" rx="10" class="card" filter="url(#sh)"/>
+  <text x="1244" y="482" class="t">开场盘问（破定义，三连）</text>
+  <text x="1244" y="508" class="b">1. 你们说的遗憾＝痛苦/否定一生？</text>
+  <text x="1244" y="529" class="b">2. 复读生没考上照常过日子，</text>
+  <text x="1262" y="550" class="b">遗憾还是痛苦？</text>
+  <text x="1244" y="571" class="b">3. 若叫遗憾，人生被否定了吗？</text>
+  <text x="1262" y="592" class="b">没有 → 别混着打</text>
+
+  <rect x="1230" y="650" width="322" height="224" rx="10" class="card" filter="url(#sh)"/>
+  <text x="1244" y="678" class="t">结辩骨架（3:30）</text>
+  <text x="1244" y="704" class="b">起笔：越是后悔，世界越显得美丽</text>
+  <text x="1244" y="725" class="b">清场：点破三个偷换</text>
+  <text x="1262" y="746" class="b">• 该遗憾 → 该痛苦</text>
+  <text x="1262" y="767" class="b">• 只是凡人 → 平凡不好</text>
+  <text x="1262" y="788" class="b">• 放下 → 从没遗憾</text>
+  <text x="1244" y="809" class="b">回扣：两难＋圆满战场</text>
+  <text x="1244" y="830" class="b">落点：<tspan class="em">我不是要他痛苦，</tspan></text>
+  <text x="1283" y="851" class="b"><tspan class="em">是要他那句「我本可以」有人听见</tspan></text>
+
+  <!-- 结辩：四辩 → 结辩骨架（走右侧通道） -->
+  <path d="M 1552 381 H 1604 V 762 H 1552" class="edge" marker-end="url(#arr)"/>
+  <rect x="1590" y="560" width="28" height="17" rx="8" class="pill"/>
+  <text x="1604" y="572.5" class="el" text-anchor="middle">结辩</text>
+
+  <!-- ================= 主攻线 ================= -->
+  <!-- 论点二 → 问题链① -->
+  <path d="M 1490 240 V 288 H 1194 V 544 H 1158" class="edgeR" marker-end="url(#arrR)"/>
+  <rect x="1300" y="280" width="80" height="17" rx="8" class="pill"/>
+  <text x="1340" y="292.5" class="elR" text-anchor="middle">盘问主攻这条</text>
+
+  <!-- 小结模板 → 结辩骨架 -->
+  <path d="M 1158 1030 H 1391 V 874" class="edgeR" marker-end="url(#arrR)"/>
+  <rect x="1242" y="1021" width="100" height="17" rx="8" class="pill"/>
+  <text x="1292" y="1033.5" class="elR" text-anchor="middle">四辩照同一句再收</text>
+
+  <!-- ================= 图例 ================= -->
+  <text x="48" y="850" class="t">图例</text>
+  <line x1="48" y1="876" x2="96" y2="876" class="edgeR" marker-end="url(#arrR)"/>
+  <text x="108" y="880" class="b">主攻线：论点二 → 三辩盘问 → 小结 → 四辩收口</text>
+  <line x1="48" y1="902" x2="96" y2="902" class="edge" marker-end="url(#arr)"/>
+  <text x="108" y="906" class="b">各辩位内部的推进顺序</text>
+  <line x1="48" y1="928" x2="96" y2="928" class="edge" stroke-dasharray="6 4" marker-end="url(#arr)"/>
+  <text x="108" y="932" class="b">补刀 / 备用分支</text>
+  <rect x="48" y="946" width="48" height="22" rx="6" fill="#fff" stroke="#d9485f" stroke-width="2"/>
+  <text x="108" y="962" class="b">红框＝主攻论点 / 杀招</text>
+
+  <text x="48" y="1300" class="sub">源：想法/辩论赛·四辩位逻辑链与问题链.yoloboard（19 卡片 · 16 连线 · 5 分组）</text>
+</svg>

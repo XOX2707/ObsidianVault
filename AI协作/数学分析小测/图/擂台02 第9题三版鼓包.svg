@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330">
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;fill:#333}.t{font-size:15px;font-weight:bold}.s{font-size:11px;fill:#666}.bad{fill:#d9534f;font-weight:bold}.ok{fill:#2e8b57;font-weight:bold}</style>
+<rect width="960" height="330" fill="#fff"/>
+<g transform="translate(10,0)">
+<rect x="0" y="40" width="300" height="270" rx="8" fill="#fafafa" stroke="#ddd"/>
+<text x="150" y="28" text-anchor="middle" class="t">① 第一版：把「在不在实心上」累加</text>
+<rect x="130" y="60" width="70" height="190" fill="#fde2e2"/>
+<line x1="20" y1="250" x2="130" y2="250" stroke="#888" stroke-width="5"/>
+<line x1="200" y1="250" x2="290" y2="250" stroke="#888" stroke-width="5"/>
+<polyline points="30,230 130,130 200,130 280,50" fill="none" stroke="#4a90d9" stroke-width="2.5"/>
+<circle cx="130" cy="130" r="5" fill="#d9534f"/>
+<text x="122" y="124" text-anchor="end">a</text>
+<text x="30" y="150">左边坡度 1</text>
+<text x="140" y="120">右边坡度 0</text>
+<text x="75" y="268" class="s" text-anchor="middle">奶酪实心</text>
+<text x="165" y="268" class="s" text-anchor="middle">洞</text>
+<text x="150" y="294" text-anchor="middle" class="bad">a 点折了个角 → 不可导 ✗</text>
+</g>
+<g transform="translate(330,0)">
+<rect x="0" y="40" width="300" height="270" rx="8" fill="#fafafa" stroke="#ddd"/>
+<text x="150" y="28" text-anchor="middle" class="t">② 勘误版：鼓包贴着洞口</text>
+<rect x="120" y="60" width="140" height="170" fill="#fde2e2"/>
+<line x1="20" y1="230" x2="120" y2="230" stroke="#888" stroke-width="5"/>
+<line x1="260" y1="230" x2="290" y2="230" stroke="#888" stroke-width="5"/>
+<path d="M122,230 Q132,170 142,230" fill="#f0a030" fill-opacity="0.5" stroke="#f0a030" stroke-width="2"/>
+<circle cx="100" cy="230" r="4" fill="#333"/>
+<text x="100" y="250" text-anchor="middle">x</text>
+<text x="124" y="250" class="s">a</text>
+<line x1="100" y1="230" x2="132" y2="200" stroke="#d9534f" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="150" y="100">从 x 看鼓包顶：</text>
+<text x="150" y="118">高度 ≈ 距离</text>
+<text x="150" y="136">差商 ≈ 1，压不到 0</text>
+<text x="150" y="162" class="s">换更小的洞，比例还是一样</text>
+<text x="40" y="268" class="s">x 在实心上，离洞口极近</text>
+<text x="150" y="294" text-anchor="middle" class="bad">x 点还是折的 → 不可导 ✗</text>
+</g>
+<g transform="translate(650,0)">
+<rect x="0" y="40" width="300" height="270" rx="8" fill="#fafafa" stroke="#ddd"/>
+<text x="150" y="28" text-anchor="middle" class="t">③ 寻寻的补丁：鼓包挪到正中间</text>
+<rect x="100" y="60" width="180" height="170" fill="#fde2e2"/>
+<line x1="20" y1="230" x2="100" y2="230" stroke="#888" stroke-width="5"/>
+<line x1="280" y1="230" x2="290" y2="230" stroke="#888" stroke-width="5"/>
+<path d="M100,230 Q150,230 200,156" fill="none" stroke="#2e8b57" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="204" y="152" class="s">距离² 天花板</text>
+<path d="M182,230 Q190,170 198,230" fill="#f0a030" fill-opacity="0.5" stroke="#f0a030" stroke-width="2"/>
+<text x="96" y="222" text-anchor="end" class="s">a</text>
+<line x1="100" y1="246" x2="182" y2="246" stroke="#666"/>
+<line x1="100" y1="241" x2="100" y2="251" stroke="#666"/><line x1="182" y1="241" x2="182" y2="251" stroke="#666"/>
+<text x="141" y="264" class="s" text-anchor="middle">至少隔半个洞</text>
+<text x="110" y="96">鼓包整个在天花板下面</text>
+<text x="110" y="114">高度 ≤ 常数 × 距离²</text>
+<text x="150" y="294" text-anchor="middle" class="ok">坡度被距离稀释成 0 → 可导 ✓</text>
+</g>
+</svg>

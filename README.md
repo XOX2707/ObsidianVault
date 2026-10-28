@@ -17,6 +17,7 @@
 | 文档 | 内容 |
 |---|---|
 | [使用说明](<使用说明.md>) | **从这里开始**：安装、三种使用方式、配置要点、费用、排错 |
+| [新手README·搭一个AI知识库](<新手README·搭一个AI知识库.md>) | 给完全不懂电脑的朋友的极简版，从零搭一个「会记事的 AI + 知识库」 |
 | [CLAUDE.md](CLAUDE.md) | 写给 AI 的项目说明和规则，本地 Claude Code 启动时自动读取 |
 | [AI协作/交接日志](<AI协作/交接日志.md>) | 云端 Claude 和本地 Claude Code 的交接信箱 |
 | [多设备与 Obsidian Sync](<多设备与 Obsidian Sync.md>) | 手机和其他电脑的使用说明 |
@@ -66,6 +67,7 @@ npm run build
 
 ## 协议
 
+- 本仓库：MIT，© 2026 XOX2707，见根目录 [`LICENSE`](LICENSE)。下面两个第三方组件不在其中，各按各的协议。
 - YOLO 源码：MIT，© 2026 Lapis0x0，见 `.obsidian/plugins/obsidian-yolo/LICENSE`。
 - deepseek-cli：MIT，npm 发布者 kavienw。
 - 本仓库的文档由 Claude Code 协助编写。

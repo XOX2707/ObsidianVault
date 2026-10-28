@@ -269,6 +269,7 @@ claude
 
 ## 十二、本仓库的默认分工约定
 
+- **总结 vs 技术支持**：总结类（汇总、整理、归纳、生成说明文档）由 YOLO Agent（我）负责；技术支持类（改代码、构建测试、git、装依赖、排查环境）由本地助手（Claude Code / deepseek-cli）负责。
 - 本地助手的回复默认追加到 `AI助手回复.md`；需要单独建文件时，要说明"单独建文件"。
 - 改插件代码后，提交前必须跑通 `type:check`、`lint:check`、`test`、`build`（见 `CLAUDE.md`）。
 - 插件改完要用户在 Obsidian 里重新加载，所有助手都没法直接操作 Obsidian 的界面。

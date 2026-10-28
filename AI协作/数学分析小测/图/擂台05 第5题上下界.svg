@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="370" viewBox="0 0 640 370">
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;fill:#333}.t{font-size:15px;font-weight:bold}.s{font-size:11px;fill:#666}</style>
+<rect width="640" height="370" fill="#fff"/>
+<text x="20" y="25" class="t">第 5 题：上界是盖子，下界是垫子（p 取 0.8 示意，画的是加了绝对值的波）</text>
+<line x1="70" y1="300" x2="565" y2="300" stroke="#333"/>
+<line x1="70" y1="45" x2="70" y2="300" stroke="#333"/>
+<g fill="#4a90d9" fill-opacity="0.15" stroke="#4a90d9" stroke-width="2">
+<path d="M70,300 Q110,-100 150,300"/><path d="M150,300 Q190,70 230,300"/><path d="M230,300 Q270,134 310,300"/>
+<path d="M310,300 Q350,168 390,300"/><path d="M390,300 Q430,190 470,300"/><path d="M470,300 Q510,205 550,300"/>
+</g>
+<g fill="#2e8b57" fill-opacity="0.55">
+<polygon points="82,300 110,118 138,300"/><polygon points="162,300 190,200 218,300"/><polygon points="242,300 270,232 298,300"/>
+<polygon points="322,300 350,249 378,300"/><polygon points="402,300 430,260 458,300"/><polygon points="482,300 510,267 538,300"/>
+</g>
+<polyline points="72,55 110,84 190,170 270,203 350,221 430,233 510,241 560,246" fill="none" stroke="#d9534f" stroke-width="2.5" stroke-dasharray="7 4"/>
+<rect x="330" y="45" width="295" height="70" rx="6" fill="#fff" stroke="#ddd"/>
+<line x1="342" y1="68" x2="372" y2="68" stroke="#d9534f" stroke-width="2.5" stroke-dasharray="7 4"/>
+<text x="380" y="72">红虚线 = 上界：最多这么大（盖子）</text>
+<rect x="345" y="88" width="24" height="12" fill="#2e8b57" fill-opacity="0.55"/>
+<text x="380" y="99">绿三角 = 下界：至少这么大（垫子）</text>
+<text x="565" y="318" class="s" text-anchor="end">x 越往右，波越矮 →</text>
+<text x="20" y="338">证「p ≤ 1 时不绝对收敛」：绿垫子加起来已经是无穷大 → 有下界就够</text>
+<text x="20" y="358" fill="#d9534f">证「p &gt; 1 时绝对收敛」：要说红盖子加起来有限 → 必须给上界（Flash1017 漏了这句）</text>
+</svg>

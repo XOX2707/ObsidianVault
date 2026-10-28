@@ -48,6 +48,7 @@ AI 模型：日常用 DeepSeek（`deepseek-v4-pro`、`deepseek-v4-flash`）；�
 5. **用户的个人笔记**：没有用户明确同意，不要修改、移动或删除。提交时**只 `git add` 你改过的具体文件**，不要用 `git add -A` 或 `git add .`，以免把用户的私人笔记推到 GitHub。
 6. 推送（`git push`）前先问用户。改插件代码后，提交前必须跑通 `type:check`、`lint:check`、`test`、`build`。
 7. 不要修改 `.obsidian/workspace*.json` 等 Obsidian 自动生成的界面状态文件。
+8. **替用户写日记（所有模型都要做）。** 用户 2026-10-19 要求：任何模型在这个库里帮他做完事，都要顺手记进当天的 `日记/YYYY-MM-DD.md`（不存在就新建，存在就往对应小节末尾追加，不改他自己写的话）。格式和写法见 `YOLO/memory/global/write-diary.md`。写之前先跑 `python scripts/ncm_daily_diary.py` 把当天网易云听歌刷进「## 今天听的歌」；日记里 `<!-- ncm:start -->`、`<!-- ai-notes:start -->` 标记夹住的段落由脚本覆盖，别往里面写。这是用户已经同意的，不受第 5 条限制；但日记是私人笔记，**不要 `git add` `日记/` 里的文件**，除非用户明确要求。
 
 ## 4. 与云端 Claude、Cursor 的协作协议（AI协作信箱）
 
