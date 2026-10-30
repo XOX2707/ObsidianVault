@@ -12,9 +12,10 @@
 ## Project structure
 
 - `项目进度与待办.md` — 总进度与待办清单（P0–P6），是了解当前状态的首选入口。
-- `DeepSeek CLI + Obsidian 联动.md` — deepseek-cli 的定位、MCP 配置、读源码发现的局限。
-- `Obsidian 内嵌 AI 插件 + DeepSeek 操作流程.md` — 插件选型对比（Smart Composer / Copilot / Real Chat），最终选 YOLO。
-- `YOLO 改写与配置文档.md` — YOLO 的构建、防覆盖、DeepSeek 接入、RAG、MCP、改代码、同步上游的完整说明。
+- `说明文档/` — 2026-10-30 起，下面这几篇和另外 6 篇说明文档（共 9 篇）从库根挪到这里；`使用说明.md`、`项目进度与待办.md`、`README.md` 没挪，仍在根目录。
+- `说明文档/DeepSeek CLI + Obsidian 联动.md` — deepseek-cli 的定位、MCP 配置、读源码发现的局限。
+- `说明文档/Obsidian 内嵌 AI 插件 + DeepSeek 操作流程.md` — 插件选型对比（Smart Composer / Copilot / Real Chat），最终选 YOLO。
+- `说明文档/YOLO 改写与配置文档.md` — YOLO 的构建、防覆盖、DeepSeek 接入、RAG、MCP、改代码、同步上游的完整说明。
 - `YOLO/` — 插件运行时数据（`data/chats`、`data/module-settings`）和提示词笔记（`YOLO/提示词/库规范.md` 目前为空）。
 - `.obsidian/plugins/obsidian-yolo/` — 自改版 YOLO 插件源码（subtree 导入，可 `git subtree pull` 同步上游）。
 - `deepseek-cli/` — deepseek-cli 源码存档，**不可直接运行**（见下）。
@@ -48,6 +49,7 @@ deepseek --help                   # 查看参数
 
 ## Conventions & notes
 
+- **跨 AI 全局环境变量（第一时间读）**：`YOLO/memory/global/cross-ai-env.md`（指针 `AI协作/跨AI全局环境变量（纪律一二）.md`）。`BRIDGE_SCRIPT_SOURCE=chat_dialog_only`：对接 Script 只从对话框复制；`USER_PROGRESS_BOARD=AI协作/用户看板·步骤与进度（纪律二）.md`：给人看的进度只改这一篇。
 - **忽略目录**：任何工具（deepseek-cli 的 `list_files` 不会自动跳过）都应忽略 `.obsidian/` 和 `deepseek-cli/`，避免扫到插件配置和 node_modules。
 - **笔记规范**：中文写作；frontmatter 建议带 `tags` 和 `updated`（日期 `YYYY-MM-DD`）；用 `[[双链]]` 引用相关笔记。
 - **路径带空格**：库路径 `C:\Users\XW\source\Obsidian Default Repo` 含空格，PowerShell 命令必须加引号。

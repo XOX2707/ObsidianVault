@@ -1210,3 +1210,96 @@ cd "C:\Users\XW\source\Obsidian Default Repo\计算机\01 程序设计-C语言\�
 Debian 第一次课：[[计算机/05 操作系统/Linux/实验/D1-00 出门之前]]、[[计算机/05 操作系统/Linux/实验/D1-01 权限与apt]]。讲的是当前用户、sudo、apt 装包和读一行报错。命令等 SSH 通了再跑，现在标的是未执行。Arch 以后在本机虚拟机装，不装到这台腾讯云上。没有 3x-ui，没有代理面板。
 
 下单前先报最新可支配余额。上一笔仍是 2026-10-28 17:08 的 ¥146.29。SSH 通了之后，把实例 ID、公网 IP 和实际系统版本发回来，不要发密码。同一小时里，C 语言练习优先于 Debian 深课。
+
+## 2026-10-28 · Cursor · 导论第 1 讲批改
+
+[[计算机/00 计算思维导论/笔记/01 程序、算法、系统分层]] 已交卷。第 1 题过。第 2、3 题待补，批改写在每题下面。进度表已改。下一讲先不开。
+
+## 2026-10-28 · Cursor · 导论第 1 讲改为待补
+
+同一篇笔记的第 1 题由「过」改为「待补」。三题都是待补。用户自己看第一课。
+
+## 2026-10-28 · Cursor · C 第 1 讲批改
+
+[[计算机/01 程序设计-C语言/笔记/01 第一个程序]] 已交卷，待补。`练习-01.c` 有两条 `printf`，贴来的输出是 `Hello, NJIT!` 和 `I am learning C programming language.`。练习指定的两句是 `Hello, NJIT` 和 `I am learning C`。`01-hello.c` 仍是 `Hello World!`。这一讲先不算过，下一讲先不开。
+
+## 2026-10-28 · Cursor · C 第 1 讲二次交卷
+
+[[计算机/01 程序设计-C语言/笔记/01 第一个程序]] 二次交卷，批过。`练习-01.c` 的两行是 `Hello, NJIT` 和 `I am learning C`，和笔记里贴的输出一致。`01-hello.c` 仍是 `Hello World!`。下一讲还没开。
+
+## 2026-10-28 · Cursor · 先做腾讯云初步部署
+
+C 第 2 讲先不开。先做 [[想法/腾讯云轻量靶机·购买与部署]]，做到「停在这里」四项：本机能 SSH、`apt update` 跑完、云防火墙只留 22、不装面板。还没买。下单前重报可支配余额。笔记里上一笔是 2026-10-28 17:08 的 ¥146.29；交接 #013 记过 17:58 的 ¥150。支付以新报的数字和结算页为准。密码不要发来。
+
+## 2026-10-28 · Cursor · 向寻寻要余额
+
+用户要求余额向寻寻要。寻寻在交接 #013 的回复里写的是 2026-10-28 17:58 可支配 ¥150，口头 ¥146.29 作废。购买笔记已改成引用 ¥150。另写交接 #014 请寻寻确认 17:58 之后有没有更新的数。密码不要发来。
+
+## 2026-10-28 · Cursor · 读到寻寻同步的余额
+
+寻寻写进 [[账单/2026-10-28 AI 月度总账（X订阅+VPS+Claude）]]「手上的现金」的最新一行是 2026-10-28 19:24 可支配 ¥124.72，库专用工商卡。17:58 口头 ¥150 作废。购买笔记已经是这个数。一个月大约 ¥45 付得起。后台那张 ¥500 逾期账单和这次购买无关，不要顺手付掉。这些改动还没 commit。密码不要发来。
+
+## 2026-10-29 · Cursor · 卡余额按 YOLO 最新对话同步
+
+最新对话是今天 11:58 的「奥沙后的困倦与苏客午餐」（`ca6206aa-b504-4922-8da9-7c62298a1fbc`）。里面没有新的工商卡短信。寻寻记下中午苏客 ¥20，并问还剩多少。上一笔确认数是 2026-10-28 19:24 的 ¥124.72。124.72 − 20 = **¥104.72**。这一行已写入月度总账「手上的现金」，并同步到 money-reminders、时间表、任务计划总表、腾讯云购买页、三方协商页。若这 20 块不是从这张卡扣的，卡上仍是 ¥124.72。一个月大约 ¥45 仍付得起。支付以结算页为准。
+
+## 2026-10-29 · Cursor · 服务器已买，下一件是 C 第 2 讲
+
+用户说服务器已购买。购买笔记回填表里已有 2026-10-28 20:46 的实例，21:55 入门四项已勾完。笔记开头仍写着「还没买」，已改成下一件做本机 C 第 2 讲 [[计算机/01 程序设计-C语言/笔记/02 变量和输入]]，练习 [[计算机/01 程序设计-C语言/代码/练习-02.c]] 还没交卷。D1-01 的命令仍未在服务器上执行，排在这一讲后面。账上的 ¥104.72 没有扣掉昨晚买机器的钱，卡余额需要重报。密码不要发来。
+
+## 2026-10-29 · Cursor · 服务器费用从专用卡扣
+
+用户确认腾讯云轻量的费用从库专用工商卡扣。日记里 2026-10-28 20:20 确认页实付 ¥45.00。124.72 − 45 = **¥79.72**。中午把苏客 ¥20 算进卡里的 ¥104.72 作废，那 20 块不记在这张卡上。月度总账「手上的现金」、money-reminders、时间表、任务计划总表、购买笔记和三方协商页已改成 ¥79.72。
+
+## 2026-10-30 · 本地 Claude Code · claude.ai 数据迁到本地，库根归档
+
+用户确认 claude.ai 组织已停用，导出的 6 个包已下进库里。本次做了这些，没有 commit，也没有 push。
+
+**对话转笔记。** 新脚本 `scripts/claude_to_notes.py` 读 `claude_data-2026-10-30/conversations.json`，照 `deepseek_to_notes.py` 的格式写笔记，放进 `AI对话/` 现有的 15 个分类文件夹，靠属性 `来源: Claude`、`claude_id` 和 DeepSeek 的笔记区分。分类表是 `scripts/claude_categories.txt`，用 uuid 前 8 位做键，因为导出里有重名和大量无标题对话。结果：87 个对话里 78 个转成笔记，9 个完全空的跳过；编程与数码 22、AI 与工具 15、交易与经济 26，其余各 1 到 6。只留问答原文、附件名、粘贴的文字和工具名，思考过程、工具结果、系统注入块都去掉了；有分支的只收最后一版；时间按北京时间。订阅链接里的 token 和 `sk-` 开头的 Key 被遮成 `***`（实测命中 1 处）。重名笔记文件名后面加 uuid 前 8 位。索引单独写在 `AI对话/00 Claude 对话索引.md`，`00 总索引.md` 只在开头加了一句指过去，原来的 DeepSeek 统计没动。转换前后 `AI对话/` 文件数 600 → 690，带 `来源: Claude` 的笔记 78 篇，和脚本输出对得上。
+
+**Project 和 Artifact。** 9 个 Project 里 3 个有内容（Trans 的项目指令，Crypto Analyzing 和 Economics Studying For Transaction 各 3 篇资料），写进 `AI对话/Claude 项目/`，其余 6 个空项目只列在索引里。导出里没有记录哪个对话属于哪个项目。18 个 Artifact 中 2 篇 Claude Docs 转成笔记放进 `AI对话/Claude Artifacts/`；16 个 HTML（15 份 Morning Brief 和「币圈生存实验室」）Obsidian 打不开，原件留在导出文件夹，索引里写了路径。
+
+**导出原件。** conversations、users、login_history、manifest、artifacts、projects、memories、claude_code_cloud、claude-memory 文件夹和 7 个 zip 都收进 `claude_data-2026-10-30/`，命名照 `deepseek_data-*`。`users.json` 和 `login_history.json` 里有邮箱、手机号和登录 IP，所以 `.gitignore` 加了一行 `claude_data-*/`，已用 `git check-ignore` 确认生效。memory 部分之前已迁进本地 Claude Code 的记忆目录。
+
+**库根散文件归档。** `个人信息.md` → `私人/个人信息.md`（私人/ 本来就不进 git）；`聊天记录.txt` → `学校/辩论赛群聊记录（土木建院 10.24-10.29）.txt`；`Untitled.png` → `转专业/图/2026-10-28 解方程草稿.png`（YOLO 里批过的两道解方程题）；`usage_data_*` 两个 zip 和两个解压文件夹 → `账单/原始数据/`。按旧路径写的 3 处引用已改：`YOLO/memory/global/MEMORY.md`、`off-campus-residence.md`、`user-nickname.md`。`[[个人信息]]` 这类 wikilink 按文件名解析，不用改。`想法/想进建院辩论赛决赛.md` 有一个小节标题里写着「从聊天记录.txt 补」，是历史记录，没改。
+
+**没动的。** 库根还剩 `AGENTS.md`、`CLAUDE.md`、`CLAUDE.local.md`、`DEEPSEEK.md`、`README.md`、`LICENSE`、`AI助手回复.md`、`使用说明.md`、`项目进度与待办.md`，另有 9 篇说明文档（`AI Agent 交互行为差异总结`、`Claude API 计费与 Opus 5.5 High 用法`、`DeepSeek CLI + Obsidian 联动`、`Obsidian 内嵌 AI 插件 + DeepSeek 操作流程`、`Obsidian 查看改动历史功能`、`YOLO 改写与配置文档`、`多设备与 Obsidian Sync`、`新手README·搭一个AI知识库`、`本地助手 vs Obsidian Agent 分工`）。这 9 篇都纳入了 git，`CLAUDE.md` 第 1 节写明说明文档在根目录，`AGENTS.md`、`DEEPSEEK.md`、`README.md`、`使用说明.md` 也按根目录引用它们。要挪的话得同时改这几份协作规则，按 4.5 跑一次 Grok 审查，再让云端和 Cursor 知道，所以先等用户决定。
+
+**唯一的下一步**：用户决定库根那 9 篇说明文档要不要挪进一个文件夹（比如 `说明文档/`）；要挪就由本地 Claude Code 一起改引用，并跑 Grok 审查。
+
+## 2026-10-30 · 本地 Claude Code · 说明文档挪进「说明文档/」，组织停用后还丢了什么
+
+**挪文件。** 用户同意后，库根 9 篇说明文档用 `git mv` 挪进 `说明文档/`（已暂存为 rename，`Claude API 计费与 Opus 5.5 High 用法.md` 原有的未提交修改保留在工作区）。按根目录写路径的地方都改了：`CLAUDE.md` 第 1 节表格和第 2 节 Obsidian Sync 一行、`DEEPSEEK.md` Project structure、`README.md` 文档表的 6 个相对链接、`使用说明.md` 目录树、`YOLO/memory/global/devices.md`。双链按文件名解析，9 个文件名在库里都唯一，不用改。`scripts/gen_file_index.py` 加排除 `claude_data` 前缀，重跑后静态文件清单已指向新路径（167 条有日期，30 条元文档）。日记、账单、交接日志、旧 Script 里的历史记录没改。用户定这次只告知 DeepSeek 和 Grok、不走 4.5 节审查，两段 Script 存档在 `AI协作/Script·告知DeepSeek·说明文档挪位与Claude数据迁移（2026-10-30）.md` 和 `AI协作/Script·告知Grok·说明文档挪位（2026-10-30）.md`。另外发现 `CLAUDE.md` 4.5 节要求用的 `scripts/grok-review.ps1` 在库里不存在。没有 commit，也没有 push。
+
+**组织停用后的损失。** 数据层面接近 0，功能层面不是 0。
+
+- 对话文字：导出是 10.30 从服务器取的，最后一条对话是 10.22。云端定时任务的运行记录也停在 10.22 到 10.23，说明那之后 claude.ai 上本来就没有新活动。只要没在导出前手动删过对话，就没丢。
+- 记忆、项目指令和资料、2 篇 Claude Docs、16 个 HTML Artifact 都在导出里，已迁移。
+- 附件原件导出里没有，只有文件名（共 78 个不同的文件名）。代码类本机大多还在：`neff.py`、`okx_perp_health.py`、`delisted_perps.py`、两个 `index.html`、`hrt-tracker-rs.zip` 都在 `C:\Users\XW\source\` 下。没找到的是 `useless_candles.py`、`analyze.py` 这一批和 `brief_template.html`。截图和手机照片要去相册里找。
+- 云端定时任务全停了：Morning brief（每天 8:00）、OKX 工具日检 + 已下架收录复核、btc-neff Actions 每日进度、PR review digest。本机的计划任务 `OkxDailyCheckLocal` 也是 Disabled，最后一次运行是 10.27 16:50，结果码 1（失败）。所以现在没有任何东西在跑 OKX 日检。
+- 云端 Claude 会话用不了了。协作协议里的「云端」只剩 Cursor 能接 `claude/...` 那类工作。
+- 公开的「币圈生存实验室」链接多半已经失效，原件 HTML 在导出里。
+- 钱：`账单/2026-10-20 claude.ai usage credits.md` 记着还剩 $11.46（其中 $10 在 2027-04-21 过期）。如果这笔挂在被停用的组织下，自己基本取不回来，只能写邮件问 Anthropic 支持能不能退。本地 Claude Code 现在还能用，说明当前登录不受影响，具体走的是哪个账号、扣哪笔钱，要用 `/status` 确认。
+- 接在 claude.ai 上的连接器（GitHub、Claude Docs 等）的授权跟着组织没了。导出里也没有「哪个对话属于哪个项目」的对应关系。
+
+**唯一的下一步**：用户决定要不要恢复 OKX 日检（本机任务已停用、上次失败）；要恢复就由本地 Claude Code 查失败原因，按 [[crypto-health-proxy]] 走代理 `127.0.0.1:12334` 重新跑通后再启用。
+
+## 2026-10-30 · 本地 Claude Code · 停用云端会话，恢复 Grok 审查脚本
+
+用户定：不再用云端 Claude 会话（用得到的云端功能只有 commit 和 push，本地更省事）；Grok 审查由本地判断；OKX 最近不要动。
+
+**改了的。** `CLAUDE.md` 第 1 节信箱一行、第 4 节（标题、成员只剩本地 Claude Code 和 Cursor、4.1、4.2 发件方、4.3、4.4 表头改「交给 Cursor」、4.5 删掉「云端会话调用不了」）。`AGENTS.md` 注明「云端」已停用、只出现在旧条目里。`使用说明.md` 4.4 节改成本地和 Cursor 配合，相关文档表和目录树里的交接日志说明也改了。`YOLO/memory/global/write-diary.md` 一处。交接日志 #002（本地 → 云端，10.15 起一直待处理）在「回复」里说明原因后改成已完成。「OKX 先别动」记进了本地 Claude Code 记忆和 `YOLO/memory/global/okx-hands-off.md`。
+
+**Grok 审查脚本。** `scripts/grok-review.ps1` 在 10.28 的提交 `e11a9da`（docs: 2026/10/28 第一批）里被删了，提交说明没写原因，`CLAUDE.md` 4.5 节却还要求用它。已用 `git restore --source=e11a9da^` 原样恢复到工作区（未暂存，内容和删除前一致）。第一次跑失败：`prompt_ack_timeout`，120 秒没回应。原因是本机直连 grok.com 不通（curl 返回 000），走 `127.0.0.1:12334` 代理才是 200，而脚本启动的进程没带代理。给这次运行单独设了 `HTTP_PROXY`/`HTTPS_PROXY` 后重跑成功。脚本本身没改；以后跑之前要先在 shell 里设好这两个变量。
+
+**审查结论：需要修改。** 审查范围是 `CLAUDE.md`、`AGENTS.md`、`DEEPSEEK.md`、`README.md`、`使用说明.md`、`scripts/gen_file_index.py`、`.gitignore` 的已暂存和未暂存改动，其中包括其他助手之前没提交的改动。Grok 确认云端已拿干净，没有残留「交给云端」的指令。逐条处理：
+1. 采纳。`DEEPSEEK.md` 那句「9 篇都挪到这里（3 篇仍在根目录）」容易读歪，改成「下面这几篇和另外 6 篇（共 9 篇）挪到这里；3 篇没挪」。
+2. 采纳。`CLAUDE.md` 4.3 节原来让本地做完后改 `项目进度与待办.md`，和第 3 节第 0 条纪律二冲突。改成：给用户看的进度改看板，`项目进度与待办.md` 只记插件和仓库的历史条目。
+3. 不采纳，交给用户定。README 里 Cursor「难仓库、长命令、靶机」和 Grok Bot（ShaWarma）「执行、线上复核」的写法是今天 11:59 重写 README 时就有的，不是这次改动。Grok Bot 和 `grok` 审查脚本是不是两回事、各管什么，要用户说了算。
+4. 不采纳。`[[文件名]]` 双链在 Obsidian 里按文件名解析，9 个文件名在库里唯一，库里其他地方也都这么写。
+5. 不采纳，超出这次范围。`使用说明.md` 没接纪律一二是之前就有的缺口。
+6. 采纳。`使用说明.md` frontmatter `updated` 改成 2026-10-30。
+
+**没做的。** 没有 commit，也没有 push。当前分支是 `cursor/vps-node-closeout-51c4`，不是 `main`，比 `main` 落后 4 个提交，工作区还有 30 多个其他助手留下的未提交改动。改完 1、2、6 后没有再审一遍。
+
+**唯一的下一步**：用户定本地以后 commit 和 push 走哪条分支（切回 `main` 合并，还是先在当前分支提交），再由本地 Claude Code 只 `git add` 这次改过的文件提交。

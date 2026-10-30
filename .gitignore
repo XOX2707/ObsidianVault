@@ -25,3 +25,6 @@ epub/*.txt
 
 # 节点分享链接（私人，不进 Git）
 私人/
+
+# claude.ai 数据导出原件（含邮箱、手机号、登录 IP，私人）
+claude_data-*/
